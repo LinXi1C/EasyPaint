@@ -1,23 +1,22 @@
 <html>
 <head>
-<title>MyHtml.html</title>
+<title>EasyPaint</title>
 
 <meta name="keywords" content="keyword1,keyword2,keyword3">
-<meta name="description" content="this is my page">
+<meta name="description" content="EasyPaint">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<script type="text/javascript" src="jquery-ui-1.11.0.custom/external/jquery/jquery-1.11.0.js"></script>
-<link rel="stylesheet" href="jquery-ui-1.11.0.custom/jquery-ui.css" />
-<link rel="stylesheet" href="jquery-ui-1.11.0.custom/jquery-ui.structure.css" />
+<script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
+<link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
+<link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.structure.css" />
 <link rel="stylesheet" href="colorpicker-master/jquery.colorpicker.css" />
-<link rel="stylesheet" href="jquery-ui-1.11.0.custom/jquery-ui.theme.css" />
-<script type="text/javascript" src="jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+<link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
+<script type="text/javascript" src="jquery-ui-1.13.0.custom/jquery-ui.js"></script>
 <script type="text/javascript" src="js/anyLine.js"></script>
 <script type="text/javascript" src="colorpicker-master/jquery.colorpicker.js"></script>
 <script type="text/javascript" src="colorpicker-master/parts/jquery.ui.colorpicker-rgbslider.js"></script>
 <script type="text/javascript" src="formulaeditor/js/FEditor.js"></script>
 <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
 <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
-<script type="text/javascript" src="js/json2.js"></script>
 <script type="text/javascript" src="js/funcImage.js">j= $;</script>
 <script type="text/javascript" src="js/canvas.js"></script>
 
@@ -65,7 +64,8 @@ canvas {
 	   <fieldset style="float:left;width:300px;">
 	        <legend>工具</legend>
 				<div id="toolsOptions">
-					<input type="radio" id="tools_pencil" name="toolsOption" checked="checked"><label for="tools_pencil">画笔</label> &nbsp;
+					<input type="radio" id="tools_pencil" name="toolsOption" checked="checked">
+                        <label for="tools_pencil"><img src="images/pencil-20.1.png" height="15px" width="15px"/>&nbsp;画笔</label> &nbsp;
 					<input type="radio" id="tools_eraser" name="toolsOption" ><label for="tools_eraser">橡皮擦</label> &nbsp;
 					<input type="radio" id="tools_trash" name="toolsOption"><label for="tools_trash">清空</label>
 					<div style="border-top:1px dashed gray;margin-top:8px;padding-top:8px;"><span>
@@ -103,7 +103,7 @@ canvas {
              </select>
             <div style="border-top:1px dashed gray;margin-top:8px;padding-top:8px;">
         <span>边框色:<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>&nbsp;
-        <span>填充色:<input id="colorpicker-popup2" type="text"  value="fe9810" style="width: 72px;display:none; "></span>
+        <span>填充色:<input id="colorpicker-popup2" type="text"  value="000000" style="width: 72px;display:none; "></span>
         </div>
         </fieldset>
 

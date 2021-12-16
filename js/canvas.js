@@ -66,11 +66,11 @@
 				    		  case "tools_pencil"		:{command=1;break;}
 				    		  case "tools_eraser"		:{command=2;break;}
 				    		  case "tools_trash"		:{command=3;break;}
-				    		  case "tools_line"		:{command=4;break;}
+				    		  case "tools_line"			:{command=4;break;}
 				    		  case "tools_dottedline"	:{command=5;break;}
 				    		  case "tools_rectangle"	:{command=6;break;}
 				    		  case "tools_circle"		:{command=7;break;}
-				    		  default 				:{command=1;};
+				    		  default 					:{command=1;};
 			    		  }
 			    		  //initialize canvas context and cursor style
 			    		  commandCallbacks.fire(command);
@@ -89,7 +89,7 @@
 			          	case 1	:	{	drawPencil(e);break; }
 			          	case 2	:	{	drawPencil(e);break; }
 			          	case 4	:	{   fakeLineInput(e);break;	   }
-			          	case 5 :    {   fakeDottedLineInput(e);	break; }
+			          	case 5  :   {   fakeDottedLineInput(e);	break; }
 			          	case 6	:	{   fakeRectangleInput(e);break;    }
 			          	case 7	:	{   fakeWordsInput(e);break;    }
 			          }
@@ -383,68 +383,77 @@
 				      
 				      //3. 工具条
 				      $("#tools_pencil").button({
-				        icons:{
-				           primary:"ui-icon-pencil"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-pencil"
+				        // }
 				      });
 	
 				      $("#tools_eraser").button({
-				        icons:{
-				           primary:"ui-icon-bullet"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-bullet"
+				        // }
 				      });
+
 				      $("#tools_trash").button({
-				        icons:{
-				           primary:"ui-icon-trash"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-trash"
+				        // }
 				      });
 				      
 				      $("#tools_save").button({
-				    	  icons:{
-				    		  primary:"ui-icon-disk"
-				    	  }
+				    	  // icons:{
+				    		//   primary:"ui-icon-disk"
+				    	  // }
 				      });
+
 					  $("#tools_save1").button({
-				    	  icons:{
-				    		  primary:"ui-icon-disk"
-				    	  }
+				    	  // icons:{
+				    		//   primary:"ui-icon-disk"
+				    	  // }
 				      });
+
 				      $("#addfunc").button({
-				    	  icons:{
-				    		  primary:"ui-icon-pencil"
-				    	  }
+				    	  // icons:{
+				    		//   primary:"ui-icon-pencil"
+				    	  // }
 				      });
+
 				      $("#tools_undo").button({
-				        icons:{
-				           primary:"ui-icon-arrowreturnthick-1-w"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-arrowreturnthick-1-n"
+				        // }
 				      });
 				      
 				       $("#tools_redo").button({
-				        icons:{
-				           primary:"ui-icon-arrowreturnthick-1-e"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-arrowreturnthick-1-e"
+				        // }
 				      });
+
 				       $("#tools_line").button({
-				        icons:{
-				           primary:"ui-icon-minusthick"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-minusthick"
+				        // }
 				      });
+
 				       $("#tools_dottedline").button({
-				        icons:{
-				           primary:"ui-icon-minusthick"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-minusthick"
+				        // }
 				      });
+
 				       $("#tools_rectangle").button({
-				        icons:{
-				           primary:"ui-icon-stop"
-				        }
+				        // icons:{
+				        //    primary:"ui-icon-stop"
+				        // }
 				      });
+
 				       $("#tools_circle").button({
-				           icons:{
-				           		primary:"ui-icon-radio-off"
-				           }
+				           // icons:{
+				           // 		primary:"ui-icon-radio-off"
+				           // }
 				       });
+
 				       $("#boldOption").button();
 				       $("#italicOption").button();
 				      
