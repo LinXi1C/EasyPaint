@@ -60,18 +60,20 @@ canvas {
 
 <body oncontextmenu="javascript:return false">
 <div id="dialog" title="作图工具">
-	<div style="font-size:14px;"> 
+	<div style="font-size:14px;">
 	   <fieldset style="float:left;width:300px;">
 	        <legend>工具</legend>
 				<div id="toolsOptions">
 					<input type="radio" id="tools_pencil" name="toolsOption" checked="checked">
-                        <label for="tools_pencil"><img src="images/pencil-20.1.png" height="15px" width="15px"/>&nbsp;画笔</label> &nbsp;
-					<input type="radio" id="tools_eraser" name="toolsOption" ><label for="tools_eraser">橡皮擦</label> &nbsp;
-					<input type="radio" id="tools_trash" name="toolsOption"><label for="tools_trash">清空</label>
+                        <label for="tools_pencil" style="font-size:24px;"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label> &nbsp;
+					<input type="radio" id="tools_eraser" name="toolsOption">
+                        <label for="tools_eraser">橡皮擦</label> &nbsp;
+					<input type="radio" id="tools_trash" name="toolsOption">
+                        <label for="tools_trash">清空</label>
 					<div style="border-top:1px dashed gray;margin-top:8px;padding-top:8px;"><span>
 						<button id="tools_save">保存为图片</button>&nbsp;&nbsp;&nbsp;
-						<button id="tools_undo">上一步</button>&nbsp;&nbsp;&nbsp;
-						<button id="tools_redo">下一步</button>
+						<button id="tools_undo">撤销</button>&nbsp;&nbsp;&nbsp;
+						<button id="tools_redo">重做</button>
 					</span></div>
 				</div>
 		</fieldset>
