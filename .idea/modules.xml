@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/jPainter-master.iml" filepath="$PROJECT_DIR$/.idea/jPainter-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/EasyPaint.iml" filepath="$PROJECT_DIR$/.idea/EasyPaint.iml" />
     </modules>
   </component>
 </project>
