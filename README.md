@@ -1,4 +1,3 @@
-#EasyPaint 
+## EasyPaint
 
 TODO
-	
