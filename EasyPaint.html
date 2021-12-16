@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang = "zh-CN">
+<head>
+    <title>EasyPaint</title>
+
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="EasyPaint">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset = "utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
+    <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.structure.css" />
+    <link rel="stylesheet" href="colorpicker-master/jquery.colorpicker.css" />
+    <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
+    <script type="text/javascript" src="jquery-ui-1.13.0.custom/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/anyLine.js"></script>
+    <script type="text/javascript" src="colorpicker-master/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="colorpicker-master/parts/jquery.ui.colorpicker-rgbslider.js"></script>
+    <script type="text/javascript" src="formulaeditor/js/FEditor.js"></script>
+    <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
+    <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
+    <script type="text/javascript" src="js/funcImage.js">j= $;</script>
+    <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/canvasAutoSize.js"></script>
+
+    <style type="text/css">
+        * {
+            font-family: '微软雅黑';
+            font-size: 20px;
+        }
+
+        canvas {
+            border: 2px dashed gray;
+        }
+
+        .container_pencil{
+            cursor: url(images/pencil-20.png), pointer;
+        }
+
+        .container_eraser{
+            cursor: url(images/test.png), pointer;
+        }
+
+        .container_font{
+            cursor:crosshair;
+        }
+        .speed {
+            top: 15px;
+        }
+
+        .ui-selectmenu-text {
+            font-size: 12px;
+        }
+
+        #div-img{
+            width: 1000px;
+            height: 400px;
+            background: white;
+        }
+    </style>
+
+    <link rel = "stylesheet" href = "bootstrap/css/bootstrap.min.css">
+    <script src = "bootstrap/js/jquery-3.6.0.min.js"></script>
+    <script src = "bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!-- 导航条标签：<nav></nav> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">EasyPaint</a>
+        <!-- 汉堡（折叠）按钮 -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        工具
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">画笔</a></li>
+                        <li><a class="dropdown-item" href="#">橡皮擦</a></li>
+                        <li><a class="dropdown-item" href="#">清除画布</a></li>
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">撤销</a></li>
+                        <li><a class="dropdown-item" href="#">重做</a></li>
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">导出图片</a></li>
+                    </ul>
+                </li>
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        形状
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">直线</a></li>
+                        <li><a class="dropdown-item" href="#">虚线</a></li>
+                        <li><a class="dropdown-item" href="#">矩形</a></li>
+                        <li><a class="dropdown-item" href="#">文字</a></li>
+                    </ul>
+                </li>
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarLines" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        线条
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">线条粗细</a></li>
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">边框颜色</a></li>
+                        <li><a class="dropdown-item" href="#">填充颜色</a></li>
+                    </ul>
+                </li>
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        字体
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">字体大小</a></li>
+                        <li><a class="dropdown-item" href="#">字体类型</a></li>
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">加粗</a></li>
+                        <li><a class="dropdown-item" href="#">倾斜</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- 搜索栏与搜索按钮 -->
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class = "container-fluid" style = "border: 3px solid red">
+    <div class = "row">
+        <div class = "col-lg-12" id = "CanvasContainer" style = "border: 1px solid blue">
+            <canvas id="myCanvas" class="container_pencil"></canvas>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
