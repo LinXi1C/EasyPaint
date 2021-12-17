@@ -141,12 +141,12 @@
 	$.colorpicker = new function() {
 		this.regional = {
 			'':	{
-				ok:				'OK',
-				cancel:			'Cancel',
+				ok:				'确定',
+				cancel:			'取消',
 				none:			'None',
 				button:			'Color',
 				title:			'Pick a color',
-				transparent:	'Transparent',
+				transparent:	'透明',
 				hsvH:			'H',
 				hsvS:			'S',
 				hsvV:			'V',

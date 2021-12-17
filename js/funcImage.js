@@ -176,7 +176,7 @@ function getTable() {
 		var _height = FUN_IMG_HEIGHT;
 		CONTEXT_2D.fillRect(tmp, 0, _width, _height);
 		// 竖线上的数字
-		CONTEXT_2D.fillStyle = "red";
+		CONTEXT_2D.fillStyle = "black";
 		CONTEXT_2D.font = FONT_STYLE;
 		var _text = (i * tableX).toFixed(countX);
 		var _x = tmp + 2;
@@ -213,7 +213,7 @@ function getTable() {
 		tmp = (i * tableY - yLeftValue) / (yRightValue - yLeftValue) * FUN_IMG_HEIGHT;
 		CONTEXT_2D.fillRect(0, FUN_IMG_HEIGHT - 1 - tmp, FUN_IMG_WIDTH, 1);
 		// 横线上的数字
-		CONTEXT_2D.fillStyle = "blue";
+		CONTEXT_2D.fillStyle = "black";
 		CONTEXT_2D.font = FONT_STYLE;
 		CONTEXT_2D.fillText((i * tableY).toFixed(countY), 0, FUN_IMG_HEIGHT - 1 - tmp);
 	}

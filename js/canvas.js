@@ -559,7 +559,7 @@
 			    	  fontTip.css({"font-size":size,"font-family":type,color:color,"font-style":fontItalic,"font-weight":fontWeight});
 			      }
 				  
-				  $("#tools_save").click(saveItAsImage);
+				 $("#tools_save").click(saveItAsImage);
 				  function saveItAsImage()
 				  {
 					 var image = $("#myCanvas").get(0).toDataURL("image/png").replace("image/png", "image/octet-stream");
