@@ -8,12 +8,12 @@
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.structure.css" />
-    <link rel="stylesheet" href="colorpicker-master/jquery.colorpicker.css" />
+    <link rel="stylesheet" href="colorpicker/jquery.colorpicker.css" />
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/jquery-ui.js"></script>
     <script type="text/javascript" src="js/anyLine.js"></script>
-    <script type="text/javascript" src="colorpicker-master/jquery.colorpicker.js"></script>
-    <script type="text/javascript" src="colorpicker-master/parts/jquery.ui.colorpicker-rgbslider.js"></script>
+    <script type="text/javascript" src="colorpicker/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="colorpicker/parts/jquery.ui.colorpicker-rgbslider.js"></script>
     <script type="text/javascript" src="formulaeditor/js/FEditor.js"></script>
     <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
     <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
@@ -144,55 +144,66 @@
         <fieldset style="float:left;width:160px;">
             <legend>画笔绘图</legend>
             <div style="background:white;position:relative;" id="container">
-            <div id="temp" style="border:1px solid gray;width:1px;height:1px;position:absolute;display:none;"></div>
+<!--            <div id="temp" style="border:1px solid gray;width:1px;height:1px;position:absolute;display:none;"></div>-->
             <canvas id="myCanvas" width="1000" height="400" class="container_pencil"></canvas>
             </div>
         </fieldset>
     </div>
 
-    <fieldset style="float:left;">
-        <legend>根据函数绘图</legend>
-        <button id="tools_save1">保存为图片</button>
-        <span></span>
-        <button id='addfunc' onclick="Add()">添加函数</button>
-            <div id="function">
-                <span id="mod" style="display:none" name="0">
-                   <input type="color"/> y=
-
-                       <span style="margin-left:120px;width:18px;overflow:hidden;">
-                           <select  style="width:50px;margin-left:-115px;" onchange="$(this).parent().next().val($(this).val())">
-                           <option value="x">x</option>
-                           <option value="x^2">eg2</option>
-                           <option value="x^3">eg3</option>
-                           <option value="sin(x)">eg4</option>
-                           <option value="cos(x)">eg5</option>
-                           </select></span>
-                           <input type="text" name="Fun"  placeholder="请从左侧列表选择或手动输入一个函数：" style="width:30%;height:20px;border:1pt;border-radius:5px;outline:none">
-                           <button onclick="Delete(this.parentNode)">删除</button>
-                           <input type="checkbox" onclick="reDraw()" checked="checked"/>画图
-                </span>
-            </div>
-
-                    <!--&lt;!&ndash;这里是input框，定位到select的上面&ndash;&gt;-->
-                    <!--<span  style="position:relative;width:20%;height:28px;border-radius:5px;">-->
-                    <!--<input type="text" name="Fun" id="qlc_zdz" class="Fun" placeholder="可选择也可输入的下拉框" style="width:20%;height:24px;border:0pt;border-radius:5px;outline:0">-->
-                    <!--</span>-->
 
 
-            <div style="border-top:1px dashed rgba(0,0,0,0.26);margin-top:8px;padding-top:8px;"><span>
-            </span></div>
-            <div id="option">
-                X：<input id="xLeftValue" /> ~<input id="xRightValue" /><br>
-                Y：<input id="yLeftValue" /> ~<input id="yRightValue" /><br>
-                <span id="show-size">Size:</span>
-            </div>
-            <button onclick="change()">显示函数图像</button>
 
-            <div id="div-img">
-               <canvas id="graph" ></canvas>
-            </div>
-    </fieldset>
-    </div>
+
+
+
+
+
+
+
+
+<!--    <fieldset style="float:left;">-->
+<!--        <legend>根据函数绘图</legend>-->
+<!--        <button id="tools_save1">保存为图片</button>-->
+<!--        <span></span>-->
+<!--        <button id='addfunc' onclick="Add()">添加函数</button>-->
+<!--            <div id="function">-->
+<!--                <span id="mod" style="display:none" name="0">-->
+<!--                   <input type="color"/> y=-->
+
+<!--                       <span style="margin-left:120px;width:18px;overflow:hidden;">-->
+<!--                           <select  style="width:50px;margin-left:-115px;" onchange="$(this).parent().next().val($(this).val())">-->
+<!--                           <option value="x">x</option>-->
+<!--                           <option value="x^2">eg2</option>-->
+<!--                           <option value="x^3">eg3</option>-->
+<!--                           <option value="sin(x)">eg4</option>-->
+<!--                           <option value="cos(x)">eg5</option>-->
+<!--                           </select></span>-->
+<!--                           <input type="text" name="Fun"  placeholder="请从左侧列表选择或手动输入一个函数：" style="width:30%;height:20px;border:1pt;border-radius:5px;outline:none">-->
+<!--                           <button onclick="Delete(this.parentNode)">删除</button>-->
+<!--                           <input type="checkbox" onclick="reDraw()" checked="checked"/>画图-->
+<!--                </span>-->
+<!--            </div>-->
+
+<!--                    &lt;!&ndash;&lt;!&ndash;这里是input框，定位到select的上面&ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;<span  style="position:relative;width:20%;height:28px;border-radius:5px;">&ndash;&gt;-->
+<!--                    &lt;!&ndash;<input type="text" name="Fun" id="qlc_zdz" class="Fun" placeholder="可选择也可输入的下拉框" style="width:20%;height:24px;border:0pt;border-radius:5px;outline:0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;</span>&ndash;&gt;-->
+
+
+<!--            <div style="border-top:1px dashed rgba(0,0,0,0.26);margin-top:8px;padding-top:8px;"><span>-->
+<!--            </span></div>-->
+<!--            <div id="option">-->
+<!--                X：<input id="xLeftValue" /> ~<input id="xRightValue" /><br>-->
+<!--                Y：<input id="yLeftValue" /> ~<input id="yRightValue" /><br>-->
+<!--                <span id="show-size">Size:</span>-->
+<!--            </div>-->
+<!--            <button onclick="change()">显示函数图像</button>-->
+
+<!--            <div id="div-img">-->
+<!--               <canvas id="graph" ></canvas>-->
+<!--            </div>-->
+<!--    </fieldset>-->
+<!--    </div>-->
 
 
         <div style="clear:both;"></div>
@@ -201,87 +212,87 @@
 </body>
 
     <span id="show" style="display:none;"></span>
-	<script>
-		const FONT_STYLE = "10px 黑体";
-		const MIN = 1e-4;
-		const MAX = 1e8;
-		const EPS = 1e-12;
-		const CANVAS = j("graph");
-		const CONTEXT_2D = CANVAS.getContext("2d");
-		const FUN_IMG_WIDTH = CANVAS.parentNode.clientWidth;
-		const FUN_IMG_HEIGHT = CANVAS.parentNode.clientHeight;
-		var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值
-		var xRightValue = FUN_IMG_WIDTH / 100;
-		var yLeftValue = -FUN_IMG_HEIGHT / 100;
-		var yRightValue = FUN_IMG_HEIGHT / 100;
-		var tableX, tableY, countX, countY;
-		var funStage = 0,
-			mouseX, mouseY;
-		var tmp;
-	</script>
-	<script>
-		CANVAS.width = FUN_IMG_WIDTH;
-		CANVAS.height = FUN_IMG_HEIGHT;
-		j("show-size").innerHTML = "Size：" + FUN_IMG_WIDTH + "*" + FUN_IMG_HEIGHT;
+<!--	<script>-->
+<!--		const FONT_STYLE = "10px 黑体";-->
+<!--		const MIN = 1e-4;-->
+<!--		const MAX = 1e8;-->
+<!--		const EPS = 1e-12;-->
+<!--		const CANVAS = j("graph");-->
+<!--		const CONTEXT_2D = CANVAS.getContext("2d");-->
+<!--		const FUN_IMG_WIDTH = CANVAS.parentNode.clientWidth;-->
+<!--		const FUN_IMG_HEIGHT = CANVAS.parentNode.clientHeight;-->
+<!--		var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值-->
+<!--		var xRightValue = FUN_IMG_WIDTH / 100;-->
+<!--		var yLeftValue = -FUN_IMG_HEIGHT / 100;-->
+<!--		var yRightValue = FUN_IMG_HEIGHT / 100;-->
+<!--		var tableX, tableY, countX, countY;-->
+<!--		var funStage = 0,-->
+<!--			mouseX, mouseY;-->
+<!--		var tmp;-->
+<!--	</script>-->
+<!--	<script>-->
+<!--		CANVAS.width = FUN_IMG_WIDTH;-->
+<!--		CANVAS.height = FUN_IMG_HEIGHT;-->
+<!--		j("show-size").innerHTML = "Size：" + FUN_IMG_WIDTH + "*" + FUN_IMG_HEIGHT;-->
 
-		CANVAS.onmousedown = function(ob) {
-			mouseX = ob.layerX;
-			mouseY = ob.layerY;
-			funStage = 1;
-		}
-		CANVAS.onmousemove = function(ob) {
-			if(funStage != 1) {
-				return;
-			}
-			var NoX, NoY, det;
-			NoX = ob.layerX;
-			NoY = ob.layerY;
-			det = (mouseX - NoX) / FUN_IMG_WIDTH * (xRightValue - xLeftValue);
-			xLeftValue += det;
-			xRightValue += det;
-			det = (NoY - mouseY) / FUN_IMG_HEIGHT * (yRightValue - yLeftValue);
-			yLeftValue += det;
-			yRightValue += det;
-			mouseX = NoX;
-			mouseY = NoY;
-			reDraw();
-			update();
-		}
-		CANVAS.onmouseup = function(ob) {
-			if(funStage == 1) {
-				funStage = 0;
-				reDraw();
-			}
-		}
-		CANVAS.onmouseleave = function(ob) {
-			if(funStage == 1) {
-				funStage = 0;
-				reDraw();
-			}
-		}
-		CANVAS.onmousewheel = function(ob) {
-			// 取消事件的默认动作
-			ob.preventDefault();
-			// 放大的比例
-			var ScaleRate = 0.9;
-			var detail;
-			if(ob.wheelDelta) {
-				detail = ob.wheelDelta;
-			} else if(ob.detail) {
-				detail = ob.detail;
-			}
-			if(detail > 0) {
-				scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, ScaleRate);
-			} else {
-				scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, 1 / ScaleRate);
-			}
-			reDraw();
-			update();
-		}
-		// 初始化
-		reDraw();
-		update();
-		Add();
-	</script>
+<!--		CANVAS.onmousedown = function(ob) {-->
+<!--			mouseX = ob.layerX;-->
+<!--			mouseY = ob.layerY;-->
+<!--			funStage = 1;-->
+<!--		}-->
+<!--		CANVAS.onmousemove = function(ob) {-->
+<!--			if(funStage != 1) {-->
+<!--				return;-->
+<!--			}-->
+<!--			var NoX, NoY, det;-->
+<!--			NoX = ob.layerX;-->
+<!--			NoY = ob.layerY;-->
+<!--			det = (mouseX - NoX) / FUN_IMG_WIDTH * (xRightValue - xLeftValue);-->
+<!--			xLeftValue += det;-->
+<!--			xRightValue += det;-->
+<!--			det = (NoY - mouseY) / FUN_IMG_HEIGHT * (yRightValue - yLeftValue);-->
+<!--			yLeftValue += det;-->
+<!--			yRightValue += det;-->
+<!--			mouseX = NoX;-->
+<!--			mouseY = NoY;-->
+<!--			reDraw();-->
+<!--			update();-->
+<!--		}-->
+<!--		CANVAS.onmouseup = function(ob) {-->
+<!--			if(funStage == 1) {-->
+<!--				funStage = 0;-->
+<!--				reDraw();-->
+<!--			}-->
+<!--		}-->
+<!--		CANVAS.onmouseleave = function(ob) {-->
+<!--			if(funStage == 1) {-->
+<!--				funStage = 0;-->
+<!--				reDraw();-->
+<!--			}-->
+<!--		}-->
+<!--		CANVAS.onmousewheel = function(ob) {-->
+<!--			// 取消事件的默认动作-->
+<!--			ob.preventDefault();-->
+<!--			// 放大的比例-->
+<!--			var ScaleRate = 0.9;-->
+<!--			var detail;-->
+<!--			if(ob.wheelDelta) {-->
+<!--				detail = ob.wheelDelta;-->
+<!--			} else if(ob.detail) {-->
+<!--				detail = ob.detail;-->
+<!--			}-->
+<!--			if(detail > 0) {-->
+<!--				scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, ScaleRate);-->
+<!--			} else {-->
+<!--				scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, 1 / ScaleRate);-->
+<!--			}-->
+<!--			reDraw();-->
+<!--			update();-->
+<!--		}-->
+<!--		// 初始化-->
+<!--		reDraw();-->
+<!--		update();-->
+<!--		Add();-->
+<!--	</script>-->
 
 </html>
