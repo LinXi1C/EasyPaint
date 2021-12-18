@@ -564,6 +564,7 @@
 				  {
 					 var image = $("#myCanvas").get(0).toDataURL("image/png").replace("image/png", "image/octet-stream");
 	    			  //locally save
+
 					  window.location.href=image;
 				  }
 

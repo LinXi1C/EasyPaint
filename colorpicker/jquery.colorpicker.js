@@ -1352,9 +1352,9 @@
 						if (inst.options.alpha || (!inst.inline && inst.options.showNoneButton)) {
 							html += '<div class="ui-colorpicker-buttonset">';
 
-							if (inst.options.alpha) {
+							/*if (inst.options.alpha) {
 								html += '<input type="radio" name="ui-colorpicker-special" id="'+id_transparent+'" class="ui-colorpicker-special-transparent"/><label for="'+id_transparent+'">' + inst._getRegional('transparent') + '</label>';
-							}
+							}*/
 							if (!inst.inline && inst.options.showNoneButton) {
 								html += '<input type="radio" name="ui-colorpicker-special" id="'+id_none+'" class="ui-colorpicker-special-none"><label for="'+id_none+'">' + inst._getRegional('none') + '</label>';
 							}
