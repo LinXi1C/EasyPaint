@@ -3,7 +3,7 @@ var CanvasAutoResize = {
     var ctx = document.getElementById('myCanvas').getContext('2d');
     var canvasContainer = document.getElementById('container');
 
-    ctx.canvas.width  = canvasContainer.offsetWidth-35;
+    ctx.canvas.width  = canvasContainer.offsetWidth-30;
     ctx.canvas.height = window.screen.availHeight-210;
     },
 

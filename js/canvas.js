@@ -383,9 +383,9 @@
 				      
 				      //3. 工具条
 				      $("#tools_pencil").button({
-				        // icons:{
-				        //    primary:"ui-icon-pencil"
-				        // }
+				        icons:{
+				           primary:"ui-icon-arrowreturnthick-1-n"
+				        }
 				      });
 	
 				      $("#tools_eraser").button({

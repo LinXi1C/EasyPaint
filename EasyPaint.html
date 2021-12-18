@@ -6,8 +6,6 @@
     <meta name="keywords" content="keyword1,keyword2,keyword3">
     <meta name="description" content="EasyPaint">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
 
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
@@ -15,6 +13,10 @@
     <link rel="stylesheet" href="colorpicker/jquery.colorpicker.css" />
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
     <link rel="stylesheet" href="css/myCSS.css" />
+
+    <link rel = "stylesheet" href = "bootstrap/css/bootstrap.min.css">
+    <script src = "bootstrap/js/jquery-3.6.0.min.js"></script>
+    <script src = "bootstrap/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/jquery-ui.js"></script>
     <script type="text/javascript" src="js/anyLine.js"></script>
@@ -24,8 +26,8 @@
     <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
     <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
     <script type="text/javascript" src="js/funcImage.js">j= $;</script>
-    <script type="text/javascript" src="js/canvas.js"></script>
     <script type="text/javascript" src="js/canvasAutoSize.js"></script>
+    <script type="text/javascript" src="js/canvas.js"></script>
 
     <style type="text/css">
         * {
@@ -62,16 +64,9 @@
             background: white;
         }
     </style>
-
-    <link rel = "stylesheet" href = "bootstrap/css/bootstrap.min.css">
-    <script src = "bootstrap/js/jquery-3.6.0.min.js"></script>
-    <script src = "bootstrap/js/bootstrap.min.js"></script>
-
 </head>
 
 <body oncontextmenu="javascript:return false">
-<input type="radio" id="tools_pencil" name="toolsOption" checked="checked">
-<label for="tools_pencil" style="font-size:24px;"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label> &nbsp;
 <!-- 导航条标签：<nav></nav> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -84,30 +79,45 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- 导航条下拉标签 -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         工具
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                         <a class="dropdown-item">
-<!--                            <input type="radio" id="tools_pencil" name="toolsOption" checked="checked">-->
-<!--                            <label for="tools_pencil" style="font-size:24px;"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>-->
+                            <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
+                            <label for="tools_pencil" style="font-size:24px"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
                         </a>
                         </li>
 
+<!--                        <li><a class="dropdown-item">-->
+<!--                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">-->
+<!--                            <label for="tools_eraser">橡皮擦</label>-->
+<!--                        </a></li>-->
 
-                        <li><a class="dropdown-item" href="#">橡皮擦</a></li>
-                        <li><a class="dropdown-item" href="#">清除画布</a></li>
+                        <li><a class="dropdown-item">
+                            <input type="radio" id="tools_trash" name="toolsOption" style="display: none">
+                            <label for="tools_trash" style="font-size:24px"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
+                        </a></li>
+
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">撤销</a></li>
-                        <li><a class="dropdown-item" href="#">重做</a></li>
+                        <li><a class="dropdown-item" id="tools_undo">
+                            <label for="tools_undo" style="font-size:24px"><img src="images/undo-20.png"/>&nbsp;撤销</label>
+                        </a></li>
+                        <li><a class="dropdown-item" id="tools_redo">
+                            <label for="tools_redo" style="font-size:24px"><img src="images/redo-20.png"/>&nbsp;重做</label>
+                        </a></li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">导出图片</a></li>
+                        <li><a class="dropdown-item" id="tools_save">
+                            <label for="tools_save" style="font-size:24px"><img src="images/output-20.png"/>&nbsp;导出图片</label>
+                        </a></li>
+
                     </ul>
                 </li>
+
                 <!-- 导航条下拉标签 -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -143,8 +153,12 @@
                         <li><a class="dropdown-item" href="#">字体类型</a></li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">加粗</a></li>
-                        <li><a class="dropdown-item" href="#">倾斜</a></li>
+                        <li><a class="dropdown-item" href="#">
+                            <span style="font-weight:bold;"><input type="checkbox" id="boldOption" name="fontOption"><label for="boldOption">B</label></span></span>
+                        </a></li>
+                        <li><a class="dropdown-item" href="#">
+                            <span style="font-style: italic;"><input type="checkbox" id="italicOption" name="italicOption"><label for="italicOption">I</label></span></span>
+                        </a></li>
                     </ul>
                 </li>
             </ul>
@@ -159,7 +173,7 @@
 
 <div class="container-fluid" id="DrawContainer">
     <div class="row">
-        <div class="col-lg-12" id="container">
+        <div id="container">
             <canvas id="myCanvas" class="container_pencil"></canvas>
         </div>
             <span class="col-lg-12" id="Copyright" >Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
