@@ -560,8 +560,6 @@
 			      }
 				  
 				 $("#tools_save").click(saveItAsImage);
-
-
 				   function saveItAsImage()
 				  {
 					  var type = 'png';
@@ -584,12 +582,6 @@
 					  };
 					  var filename = '画图 .' + type;
 					  saveFile(imgData,filename);
-
-					  /*var image = $("#myCanvas").get(0).toDataURL("image/png").replace("image/png", "image/octet-stream");
-                       //locally save
-
-                       window.location.href=image;
-                       */
 				  }
 
 
