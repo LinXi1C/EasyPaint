@@ -352,21 +352,21 @@
 				  //// define function
 				  function initUI()
 			      {
-				      				      //界面UI初始化，对话框
-				       $( "#dialog" ).dialog(
-				       			{
-									autoOpen: true,
-									show: {
-										effect: "blind",
-										duration: 920
-									},
-									hide: {
-										effect: "explode",
-										duration: 920
-									},
-									height:650,
-									width:1100
-								});
+					   // 界面UI初始化，对话框
+				       // $( "#dialog" ).dialog(
+				       // 			{
+						// 			autoOpen: true,
+						// 			show: {
+						// 				effect: "blind",
+						// 				duration: 920
+						// 			},
+						// 			hide: {
+						// 				effect: "explode",
+						// 				duration: 920
+						// 			},
+						// 			height:650,
+						// 			width:1100
+						// 		});
 									
 					  //2. canvas 被拖动，重新设置画板大小（因为拖动是css效果，而实际画板大小是width 和height属性）				
 				      $("#myCanvas").resizable({
@@ -381,81 +381,81 @@
 				      	grid: [ 20, 10 ]
 				      });
 				      
-				      //3. 工具条
-				      $("#tools_pencil").button({
-				        icons:{
-				           primary:"ui-icon-arrowreturnthick-1-n"
-				        }
-				      });
-	
-				      $("#tools_eraser").button({
-				        // icons:{
-				        //    primary:"ui-icon-bullet"
-				        // }
-				      });
-
-				      $("#tools_trash").button({
-				        // icons:{
-				        //    primary:"ui-icon-trash"
-				        // }
-				      });
-				      
-				      $("#tools_save").button({
-				    	  // icons:{
-				    		//   primary:"ui-icon-disk"
-				    	  // }
-				      });
-
-					  $("#tools_save1").button({
-				    	  // icons:{
-				    		//   primary:"ui-icon-disk"
-				    	  // }
-				      });
-
-				      $("#addfunc").button({
-				    	  // icons:{
-				    		//   primary:"ui-icon-pencil"
-				    	  // }
-				      });
-
-				      $("#tools_undo").button({
-				        // icons:{
-				        //    primary:"ui-icon-arrowreturnthick-1-n"
-				        // }
-				      });
-				      
-				       $("#tools_redo").button({
-				        // icons:{
-				        //    primary:"ui-icon-arrowreturnthick-1-e"
-				        // }
-				      });
-
-				       $("#tools_line").button({
-				        // icons:{
-				        //    primary:"ui-icon-minusthick"
-				        // }
-				      });
-
-				       $("#tools_dottedline").button({
-				        // icons:{
-				        //    primary:"ui-icon-minusthick"
-				        // }
-				      });
-
-				       $("#tools_rectangle").button({
-				        // icons:{
-				        //    primary:"ui-icon-stop"
-				        // }
-				      });
-
-				       $("#tools_circle").button({
-				           // icons:{
-				           // 		primary:"ui-icon-radio-off"
-				           // }
-				       });
-
-				       $("#boldOption").button();
-				       $("#italicOption").button();
+				      // //3. 工具条
+				      // $("#tools_pencil").button({
+				      //   icons:{
+				      //      primary:"ui-icon-arrowreturnthick-1-n"
+				      //   }
+				      // });
+					  //
+				      // $("#tools_eraser").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-bullet"
+				      //   // }
+				      // });
+					  //
+				      // $("#tools_trash").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-trash"
+				      //   // }
+				      // });
+				      //
+				      // $("#tools_save").button({
+				    	//   // icons:{
+				    	// 	//   primary:"ui-icon-disk"
+				    	//   // }
+				      // });
+					  //
+					  // $("#tools_save1").button({
+				    	//   // icons:{
+				    	// 	//   primary:"ui-icon-disk"
+				    	//   // }
+				      // });
+					  //
+				      // $("#addfunc").button({
+				    	//   // icons:{
+				    	// 	//   primary:"ui-icon-pencil"
+				    	//   // }
+				      // });
+					  //
+				      // $("#tools_undo").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-arrowreturnthick-1-n"
+				      //   // }
+				      // });
+				      //
+				      //  $("#tools_redo").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-arrowreturnthick-1-e"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_line").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-minusthick"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_dottedline").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-minusthick"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_rectangle").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-stop"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_circle").button({
+				      //      // icons:{
+				      //      // 		primary:"ui-icon-radio-off"
+				      //      // }
+				      //  });
+					  //
+				      //  $("#boldOption").button();
+				      //  $("#italicOption").button();
 				      
 				      //4. 画笔粗细设置	
 				      $("#penWidth").selectmenu({
