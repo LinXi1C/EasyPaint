@@ -28,6 +28,7 @@
     <script type="text/javascript" src="js/funcImage.js">j= $;</script>
     <script type="text/javascript" src="js/canvasAutoSize.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/myJS.js"></script>
 
     <style type="text/css">
         * {
@@ -36,6 +37,7 @@
         }
 
         canvas {
+            margin-top: 4px;
             border: 2px dashed gray;
         }
 
@@ -85,36 +87,36 @@
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                        <a class="dropdown-item">
                             <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
-                            <label for="tools_pencil" style="font-size:24px"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
-                        </a>
+                            <label for="tools_pencil" style="font-size:20px" class="dropdown-item"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
                         </li>
 
-<!--                        <li><a class="dropdown-item">-->
-<!--                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">-->
-<!--                            <label for="tools_eraser">橡皮擦</label>-->
-<!--                        </a></li>-->
+                        <li>
+                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">
+                            <label for="tools_eraser" style="font-size:20px" class="dropdown-item"><img src="images/eraser-20.png"/> 橡皮擦</label>
+                        </li>
 
-                        <li><a class="dropdown-item">
+                        <li>
                             <input type="radio" id="tools_trash" name="toolsOption" style="display: none">
-                            <label for="tools_trash" style="font-size:24px"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
-                        </a></li>
+                            <label for="tools_trash" style="font-size:20px" class="dropdown-item"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
+                        </li>
 
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" id="tools_undo">
-                            <label for="tools_undo" style="font-size:24px"><img src="images/undo-20.png"/>&nbsp;撤销</label>
-                        </a></li>
-                        <li><a class="dropdown-item" id="tools_redo">
-                            <label for="tools_redo" style="font-size:24px"><img src="images/redo-20.png"/>&nbsp;重做</label>
-                        </a></li>
+                        <li>
+                            <input type="radio" id="tools_undo" style="display: none">
+                            <label for="tools_undo" style="font-size:20px" class="dropdown-item"><img src="images/undo-20.png"/>&nbsp;撤销</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_redo" style="display: none">
+                            <label for="tools_redo" style="font-size:20px" class="dropdown-item"><img src="images/redo-20.png"/>&nbsp;重做</label>
+                        </li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" id="tools_save">
-                            <label for="tools_save" style="font-size:24px"><img src="images/output-20.png"/>&nbsp;导出图片</label>
-                        </a></li>
-
+                        <li>
+                            <input type="radio" id="tools_save" style="display: none">
+                            <label for="tools_save" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
+                        </li>
                     </ul>
                 </li>
 
@@ -124,10 +126,22 @@
                         形状
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">直线</a></li>
-                        <li><a class="dropdown-item" href="#">虚线</a></li>
-                        <li><a class="dropdown-item" href="#">矩形</a></li>
-                        <li><a class="dropdown-item" href="#">文字</a></li>
+                        <li>
+                            <input type="radio" id="tools_line" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/line-20.png"/> 直线</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_dottedline" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/dashed-line-20.png"/> 虚线</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_rectangle" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/rectangular-20.png"/> 矩形</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_circle" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/a-20.png"/> 文字</label>
+                        </li>
                     </ul>
                 </li>
                 <!-- 导航条下拉标签 -->
@@ -149,8 +163,22 @@
                         字体
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">字体大小</a></li>
-                        <li><a class="dropdown-item" href="#">字体类型</a></li>
+                        <li>
+                            <span>
+                                <label style="font-size:20px" class="dropdown-item"><img src="images/increase-font-20.png"/> 字体大小</label>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                </ul>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <label style="font-size:20px" class="dropdown-item"><img src="images/choose-font-20.png"/> 字体类型</label>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                </ul>
+                            </span>
+                        </li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">
@@ -164,8 +192,7 @@
             </ul>
             <!-- 搜索栏与搜索按钮 -->
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <button class="btn btn-outline-light">函数绘图</button>
             </form>
         </div>
     </div>
