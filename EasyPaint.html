@@ -28,6 +28,7 @@
     <script type="text/javascript" src="js/funcImage.js">j= $;</script>
     <script type="text/javascript" src="js/canvasAutoSize.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/myJS.js"></script>
 
     <style type="text/css">
         * {
@@ -85,35 +86,38 @@
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                        <a class="dropdown-item">
+
                             <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
-                            <label for="tools_pencil" style="font-size:24px"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
-                        </a>
+                            <label for="tools_pencil" style="font-size:24px" class="dropdown-item"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
+
                         </li>
 
-<!--                        <li><a class="dropdown-item">-->
-<!--                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">-->
-<!--                            <label for="tools_eraser">橡皮擦</label>-->
-<!--                        </a></li>-->
+                        <li>
+                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">
+                            <label for="tools_eraser" style="font-size:24px" class="dropdown-item"><img src="images/eraser-20.png"/> 橡皮擦</label>
+                        </li>
 
-                        <li><a class="dropdown-item">
+                        <li>
                             <input type="radio" id="tools_trash" name="toolsOption" style="display: none">
-                            <label for="tools_trash" style="font-size:24px"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
-                        </a></li>
+                            <label for="tools_trash" style="font-size:24px" class="dropdown-item"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
+                        </li>
 
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" id="tools_undo">
-                            <label for="tools_undo" style="font-size:24px"><img src="images/undo-20.png"/>&nbsp;撤销</label>
-                        </a></li>
-                        <li><a class="dropdown-item" id="tools_redo">
-                            <label for="tools_redo" style="font-size:24px"><img src="images/redo-20.png"/>&nbsp;重做</label>
-                        </a></li>
+                        <li>
+                            <input type="radio" id="tools_undo" style="display: none">
+                            <label for="tools_undo" style="font-size:24px" class="dropdown-item"><img src="images/undo-20.png"/>&nbsp;撤销</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_redo" style="display: none">
+                            <label for="tools_redo" style="font-size:24px" class="dropdown-item"><img src="images/redo-20.png"/>&nbsp;重做</label>
+                        </li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" id="tools_save">
-                            <label for="tools_save" style="font-size:24px"><img src="images/output-20.png"/>&nbsp;导出图片</label>
-                        </a></li>
+                        <li>
+                            <input type="radio" id="tools_save" style="display: none">
+                            <label for="tools_save" style="font-size:24px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
+                        </li>
 
                     </ul>
                 </li>
