@@ -126,10 +126,22 @@
                         形状
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">直线</a></li>
-                        <li><a class="dropdown-item" href="#">虚线</a></li>
-                        <li><a class="dropdown-item" href="#">矩形</a></li>
-                        <li><a class="dropdown-item" href="#">文字</a></li>
+                        <li>
+                            <input type="radio" id="tools_line" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/line-20.png"/> 直线</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_dottedline" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/dashed-line-20.png"/> 虚线</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_rectangle" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/rectangular-20.png"/> 矩形</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_circle" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/a-20.png"/> 文字</label>
+                        </li>
                     </ul>
                 </li>
                 <!-- 导航条下拉标签 -->
@@ -151,8 +163,22 @@
                         字体
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">字体大小</a></li>
-                        <li><a class="dropdown-item" href="#">字体类型</a></li>
+                        <li>
+                            <span>
+                                <label style="font-size:20px" class="dropdown-item"><img src="images/increase-font-20.png"/> 字体大小</label>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                </ul>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <label style="font-size:20px" class="dropdown-item"><img src="images/choose-font-20.png"/> 字体类型</label>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                </ul>
+                            </span>
+                        </li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">
