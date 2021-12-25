@@ -3,8 +3,9 @@
 ### EasyPaint.html为全新响应式布局
 
 TODO：
-1. 所有按钮汉化：（Transparent、Cancel、OK）、Delete…… 
-2. 函数绘图坐标轴横纵标尺调为黑色 
-3. "Transparent" Bug Fix 
-4. "保存图片" 格式Bug Fix
+1. 橡皮擦切换BUG
+2. 函数绘图坐标轴横纵标尺数字增大 
+3. 下拉菜单选中状态切换
+4. canvas画布改变后自动清除画布内容
+5. 保存下来的图片背景改为白色，目前好像是透明
 

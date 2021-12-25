@@ -352,21 +352,21 @@
 				  //// define function
 				  function initUI()
 			      {
-				      				      //界面UI初始化，对话框
-				       $( "#dialog" ).dialog(
-				       			{
-									autoOpen: true,
-									show: {
-										effect: "blind",
-										duration: 920
-									},
-									hide: {
-										effect: "explode",
-										duration: 920
-									},
-									height:650,
-									width:1100
-								});
+					   // 界面UI初始化，对话框
+				       // $( "#dialog" ).dialog(
+				       // 			{
+						// 			autoOpen: true,
+						// 			show: {
+						// 				effect: "blind",
+						// 				duration: 920
+						// 			},
+						// 			hide: {
+						// 				effect: "explode",
+						// 				duration: 920
+						// 			},
+						// 			height:650,
+						// 			width:1100
+						// 		});
 									
 					  //2. canvas 被拖动，重新设置画板大小（因为拖动是css效果，而实际画板大小是width 和height属性）				
 				      $("#myCanvas").resizable({
@@ -381,81 +381,81 @@
 				      	grid: [ 20, 10 ]
 				      });
 				      
-				      //3. 工具条
-				      $("#tools_pencil").button({
-				        icons:{
-				           primary:"ui-icon-arrowreturnthick-1-n"
-				        }
-				      });
-	
-				      $("#tools_eraser").button({
-				        // icons:{
-				        //    primary:"ui-icon-bullet"
-				        // }
-				      });
-
-				      $("#tools_trash").button({
-				        // icons:{
-				        //    primary:"ui-icon-trash"
-				        // }
-				      });
-				      
-				      $("#tools_save").button({
-				    	  // icons:{
-				    		//   primary:"ui-icon-disk"
-				    	  // }
-				      });
-
-					  $("#tools_save1").button({
-				    	  // icons:{
-				    		//   primary:"ui-icon-disk"
-				    	  // }
-				      });
-
-				      $("#addfunc").button({
-				    	  // icons:{
-				    		//   primary:"ui-icon-pencil"
-				    	  // }
-				      });
-
-				      $("#tools_undo").button({
-				        // icons:{
-				        //    primary:"ui-icon-arrowreturnthick-1-n"
-				        // }
-				      });
-				      
-				       $("#tools_redo").button({
-				        // icons:{
-				        //    primary:"ui-icon-arrowreturnthick-1-e"
-				        // }
-				      });
-
-				       $("#tools_line").button({
-				        // icons:{
-				        //    primary:"ui-icon-minusthick"
-				        // }
-				      });
-
-				       $("#tools_dottedline").button({
-				        // icons:{
-				        //    primary:"ui-icon-minusthick"
-				        // }
-				      });
-
-				       $("#tools_rectangle").button({
-				        // icons:{
-				        //    primary:"ui-icon-stop"
-				        // }
-				      });
-
-				       $("#tools_circle").button({
-				           // icons:{
-				           // 		primary:"ui-icon-radio-off"
-				           // }
-				       });
-
-				       $("#boldOption").button();
-				       $("#italicOption").button();
+				      // //3. 工具条
+				      // $("#tools_pencil").button({
+				      //   icons:{
+				      //      primary:"ui-icon-arrowreturnthick-1-n"
+				      //   }
+				      // });
+					  //
+				      // $("#tools_eraser").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-bullet"
+				      //   // }
+				      // });
+					  //
+				      // $("#tools_trash").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-trash"
+				      //   // }
+				      // });
+				      //
+				      // $("#tools_save").button({
+				    	//   // icons:{
+				    	// 	//   primary:"ui-icon-disk"
+				    	//   // }
+				      // });
+					  //
+					  // $("#tools_save1").button({
+				    	//   // icons:{
+				    	// 	//   primary:"ui-icon-disk"
+				    	//   // }
+				      // });
+					  //
+				      // $("#addfunc").button({
+				    	//   // icons:{
+				    	// 	//   primary:"ui-icon-pencil"
+				    	//   // }
+				      // });
+					  //
+				      // $("#tools_undo").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-arrowreturnthick-1-n"
+				      //   // }
+				      // });
+				      //
+				      //  $("#tools_redo").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-arrowreturnthick-1-e"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_line").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-minusthick"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_dottedline").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-minusthick"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_rectangle").button({
+				      //   // icons:{
+				      //   //    primary:"ui-icon-stop"
+				      //   // }
+				      // });
+					  //
+				      //  $("#tools_circle").button({
+				      //      // icons:{
+				      //      // 		primary:"ui-icon-radio-off"
+				      //      // }
+				      //  });
+					  //
+				      //  $("#boldOption").button();
+				      //  $("#italicOption").button();
 				      
 				      //4. 画笔粗细设置	
 				      $("#penWidth").selectmenu({
@@ -560,13 +560,31 @@
 			      }
 				  
 				 $("#tools_save").click(saveItAsImage);
-				  function saveItAsImage()
+				   function saveItAsImage()
 				  {
-					 var image = $("#myCanvas").get(0).toDataURL("image/png").replace("image/png", "image/octet-stream");
-	    			  //locally save
+					  var type = 'png';
+					  var imgData = $("#myCanvas").get(0).toDataURL(type);
 
-					  window.location.href=image;
+					  var _fixType = function(type) {
+						  type = type.toLowerCase().replace(/jpg/i, 'jpeg');
+						  var r = type.match(/png|jpeg|bmp|gif/)[0];
+						  return 'image/' + r;
+					  };
+					  imgData = imgData.replace(_fixType(type),'image/octet-stream');
+					  var saveFile = function(data, filename){
+						  var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+						  save_link.href = data;
+						  save_link.download = filename;
+
+						  var event = document.createEvent('MouseEvents');
+						  event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+						  save_link.dispatchEvent(event);
+					  };
+					  var filename = '画图 .' + type;
+					  saveFile(imgData,filename);
 				  }
+
+
 
 
 				  $("#tools_save1").click(saveItAsImage1);
