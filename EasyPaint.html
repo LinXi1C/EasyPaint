@@ -70,18 +70,14 @@
 
 <body oncontextmenu="javascript:return false">
 
-<!-- 模态框 -->
-<div class="modal" id="myModal" tabindex="-1">
+<!-- 线条粗细模态框 -->
+<div class="modal" id="line-width-modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-
-            <!-- 模态框头部 -->
             <div class="modal-header">
                 <h5 class="modal-title">属性</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-
-            <!-- 模态框内容 -->
             <div class="modal-body">
                     <span>线条粗细 &nbsp;&nbsp;&nbsp;</span>
 <!--                    <select class="selectpicker">-->
@@ -101,8 +97,102 @@
                         <option value="18">18px</option>
                     </select>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <!-- 模态框底部 -->
+<!-- 边框色模态框 -->
+<div class="modal" id="colorpicker1-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>边框颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 填充色模态框 -->
+<div class="modal" id="colorpicker2-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>填充颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup2" type="text" value="000000" style="width: 72px;display:none; "></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 字体大小模态框 -->
+<div class="modal" id="font1-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>字体大小 &nbsp;&nbsp;&nbsp;</span>
+                <select id="fontSize" >
+                    <option value="8px" selected>8px</option>
+                    <option value="10px">10px</option>
+                    <option value="12px">12px</option>
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px">18px</option>
+                    <option value="20px">20px</option>
+                    <option value="22px">22px</option>
+                    <option value="24px">24px</option>
+                    <option value="26px">26px</option>
+                    <option value="28px">28px</option>
+                    <option value="30px">30px</option>
+                    <option value="32px">32px</option>
+                    <option value="34px">34px</option>
+                    <option value="36px">36px</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 字体类型模态框 -->
+<div class="modal" id="font2-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>字体类型 &nbsp;&nbsp;&nbsp;</span>
+                <select id="fontType" style="top:20px;" >
+                    <option value="宋体" >宋体</option>
+                    <option value="微软雅黑">微软雅黑</option>
+                    <option value="仿宋">仿宋</option>
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Consolas">Consolas</option>
+                </select>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
             </div>
@@ -113,7 +203,7 @@
 <!-- 导航条标签：<nav></nav> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">EasyPaint</a>
+        <a class="navbar-brand">EasyPaint</a>
         <!-- 汉堡（折叠）按钮 -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -125,7 +215,6 @@
                     <a class="nav-link dropdown-toggle" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         工具
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
@@ -163,7 +252,7 @@
 
                 <!-- 导航条下拉标签 -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         形状
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -192,51 +281,59 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal"><img src="images/line-width-20.png"/>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#line-width-modal"><img src="images/line-width-20.png"/>
                                 线条粗细
                             </label>
-
                         </li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">边框颜色</a></li>
-                        <li><a class="dropdown-item" href="#">填充颜色</a></li>
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker1-modal"><img src="images/window-color-20.png"/>
+                                边框颜色
+                            </label>
+                        </li>
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker2-modal"><img src="images/fill-color-20.png"/>
+                                填充颜色
+                            </label>
+                        </li>
                     </ul>
                 </li>
                 <!-- 导航条下拉标签 -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         字体
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <span>
-                                <label style="font-size:20px" class="dropdown-item"><img src="images/increase-font-20.png"/> 字体大小</label>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                </ul>
-                            </span>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#font1-modal"><img src="images/increase-font-20.png"/>
+                                字体大小
+                            </label>
                         </li>
                         <li>
-                            <span>
-                                <label style="font-size:20px" class="dropdown-item"><img src="images/choose-font-20.png"/> 字体类型</label>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                </ul>
-                            </span>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#font2-modal"><img src="images/choose-font-20.png"/>
+                                字体类型
+                            </label>
                         </li>
+
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">
-                            <span style="font-weight:bold;"><input type="checkbox" id="boldOption" name="fontOption"><label for="boldOption"> B</label></span></span>
-                        </a></li>
-                        <li><a class="dropdown-item" href="#">
-                            <span style="font-style: italic;"><input type="checkbox" id="italicOption" name="italicOption"><label for="italicOption"> I</label></span></span>
-                        </a></li>
+                        <li>
+                            <input type="checkbox" id="boldOption" name="fontOption" style="display: none">
+                            <label for="boldOption" class="dropdown-item">
+                                <img src="images/bold-20.png"/> 加粗
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="italicOption" name="italicOption" style="display: none">
+                            <label for="italicOption" class="dropdown-item">
+                                <img src="images/formatting-20.png"/> 斜体
+                            </label>
+                        </li>
                     </ul>
                 </li>
             </ul>
-            <!-- 搜索栏与搜索按钮 -->
+            <!-- 功能切换按钮 -->
             <form class="d-flex">
                 <button class="btn btn-outline-light">函数绘图</button>
             </form>
@@ -255,5 +352,4 @@
 </div>
 
 </body>
-
 </html>
