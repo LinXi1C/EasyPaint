@@ -459,7 +459,7 @@
 				      
 				      //4. 画笔粗细设置	
 				      $("#penWidth").selectmenu({
-				          width:70,
+				          width:100,
 				          select:penWidthEventListener
 				      });
 				      
