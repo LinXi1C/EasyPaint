@@ -1,14 +1,21 @@
 #Copyright{
     font-size: 5px;
     color: gray;
-    margin-top: 7px;
+    margin-top: 8px;
     text-align: center;
     /*border: red 1px solid;*/
 }
 
-#Copyright2{
+.Copyright2{
     font-size: 5px;
     color: gray;
-    text-align: center;
+    text-align: left;
+    /*border: red 1px solid;*/
+}
+
+.Copyright3{
+    font-size: 5px;
+    color: gray;
+    text-align: right;
     /*border: red 1px solid;*/
 }
