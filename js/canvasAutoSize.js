@@ -11,9 +11,9 @@ var CanvasAutoResize = {
     initialize: function(){
         var self = CanvasAutoResize;
         self.draw();
-        $(window).on('resize', function(event){
-        self.draw();
-    });
+    //     $(window).on('resize', function(event){
+    //     self.draw();
+    // });
     }
 }
 
@@ -34,9 +34,9 @@ var CanvasAutoResize2 = {
     initialize: function(){
         var self = CanvasAutoResize2;
         self.draw();
-        $(window).on('resize', function(event){
-            self.draw();
-        });
+        // $(window).on('resize', function(event){
+        //     self.draw();
+        // });
     }
 }
 
