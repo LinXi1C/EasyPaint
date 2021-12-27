@@ -7,6 +7,8 @@
     <meta name="description" content="EasyPaint">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="referrer" content="no-referrer">
+    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
 
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
@@ -38,27 +40,8 @@
         }
 
         canvas {
-            margin-top: 10px;
+            margin-top: 8px;
             border: 2px dashed gray;
-        }
-
-        .container_pencil{
-            cursor: url(images/pencil-20.png), pointer;
-        }
-
-        .container_eraser{
-            cursor: url(images/eraser-20.png), pointer;
-        }
-
-        .container_font{
-            cursor:crosshair;
-        }
-        .speed {
-            top: 15px;
-        }
-
-        .ui-selectmenu-text {
-            font-size: 12px;
         }
 
         #div-img{
@@ -70,39 +53,40 @@
 </head>
 
 <body oncontextmenu="javascript:return false">
-
 <!-- 添加函数模态框 -->
 <div class="modal" id="function-modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"> 添加函数</h5>
+                <h5 class="modal-title"> 属性</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body">
 
-                <button id='addfunc' onclick="Add()">添加函数</button>
+            <div class="modal-body">
                 <div id="function">
                 <span id="mod" style="display:none" name="0">
                    <input type="color"/> y =
                        <span style="margin-left:120px;width:18px;overflow:hidden;">
-                           <select  style="width:50px;margin-left:-115px;" onchange="$(this).parent().next().val($(this).val())">
-                           <option value=" "> </option>
+                           <select style="width:80px;margin-left:-115px;" onchange="$(this).parent().next().val($(this).val())">
+                           <option value="0" selected>0</option>
                            <option value="x">x</option>
                            <option value="x^2">x^2</option>
                            <option value="x^3">x^3</option>
                            <option value="sin(x)">sin(x)</option>
                            <option value="cos(x)">cos(x)</option>
+                           <option value="e^x">e^x</option>
+                           <option value="log(x)">log(x)</option>
                            </select>
                        </span>
-                           <input type="text" name="Fun" placeholder="请从左侧列表选择或手动输入一个函数：" style="width:30%;height:20px;border:1pt;border-radius:5px;outline:none">
-                           <button onclick="Delete(this.parentNode)">删除</button>
+                           <input type="text" name="Fun" placeholder="请选择或输入一个函数" style="width:65%;height:30px;border:1pt;border-radius:5px;outline:none">
+                    <button class="btn btn-outline-primary btn-sm" onclick="Delete(this.parentNode)">删除</button>
                 </span>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal" onclick="change()">确定</button>
+                <button id='addfunc' onclick="Add()" class="btn btn-danger btn-sm"> 添加函数</button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal" onclick="change()"> 确定</button>
             </div>
         </div>
     </div>
@@ -159,15 +143,12 @@
             </div>
         </div>
         <div style="clear:both;"></div>
-    </div>
-    <div class="row">
         <span class="col-lg-12" id="Copyright">Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
     </div>
 </div>
-
 </body>
 
-<span id="show" style="display:none;"></span>
+<!--<span id="show" style="display:none;"></span>-->
     <script>
         const FONT_STYLE = "10px 黑体";
         const MIN = 1e-4;

@@ -26,7 +26,7 @@ var CanvasAutoResize2 = {
         var ctx = document.getElementById('graph').getContext('2d');
         var canvasContainer = document.getElementById('FuncContainer');
 
-        ctx.canvas.width  = canvasContainer.offsetWidth-30;
+        ctx.canvas.width  = canvasContainer.offsetWidth-34;
         ctx.canvas.height = window.screen.availHeight-220;
 
     },
