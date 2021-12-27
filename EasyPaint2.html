@@ -7,8 +7,6 @@
     <meta name="description" content="EasyPaint">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="referrer" content="no-referrer">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
 
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
@@ -42,6 +40,17 @@
         canvas {
             margin-top: 8px;
             border: 2px dashed gray;
+        }
+
+        .container_font{
+            cursor:crosshair;
+        }
+        .speed {
+            top: 15px;
+        }
+
+        .ui-selectmenu-text {
+            font-size: 12px;
         }
 
         /*#div-img{*/
@@ -115,11 +124,10 @@
                             </label>
                         </li>
 
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
                         <li>
                             <input type="radio" id="tools_save1" style="display: none">
                             <label for="tools_save1" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
+<!--                            <label for="tools_save1" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>-->
                         </li>
                     </ul>
                 </li>
