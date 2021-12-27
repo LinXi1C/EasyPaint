@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang = "zh-CN">
+<head>
+    <title>EasyPaint</title>
+
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="EasyPaint">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="referrer" content="no-referrer">
+    <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
+
+    <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
+    <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.structure.css" />
+    <link rel="stylesheet" href="colorpicker/jquery.colorpicker.css" />
+    <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
+    <link rel="stylesheet" href="css/myCSS.css" />
+
+    <link rel = "stylesheet" href = "bootstrap/css/bootstrap.min.css">
+    <script src = "bootstrap/js/jquery-3.6.0.min.js"></script>
+    <script src = "bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="jquery-ui-1.13.0.custom/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/anyLine.js"></script>
+    <script type="text/javascript" src="colorpicker/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="colorpicker/parts/jquery.ui.colorpicker-rgbslider.js"></script>
+    <script type="text/javascript" src="formulaeditor/js/FEditor.js"></script>
+    <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
+    <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
+    <script type="text/javascript" src="js/funcImage.js"></script>
+    <script type="text/javascript" src="js/canvasAutoSize.js"></script>
+    <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/myJS.js"></script>
+
+    <style type="text/css">
+        * {
+            font-family: '微软雅黑';
+            font-size: 20px;
+        }
+
+        canvas {
+            margin-top: 4px;
+            border: 2px dashed gray;
+        }
+
+        .container_pencil{
+            cursor: url(images/pencil-20.png), pointer;
+        }
+
+        .container_eraser{
+            cursor: url(images/eraser-20.png), pointer;
+        }
+
+        .container_font{
+            cursor:crosshair;
+        }
+        .speed {
+            top: 15px;
+        }
+
+        .ui-selectmenu-text {
+            font-size: 12px;
+        }
+
+        #div-img{
+            width: 1000px;
+            height: 400px;
+            background: white;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="javascript:return false">
+
+<!-- 线条粗细模态框 -->
+<div class="modal" id="line-width-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                    <span>线条粗细 &nbsp;&nbsp;&nbsp;</span>
+<!--                    <select class="selectpicker">-->
+<!--                        <option>Mustard</option>-->
+<!--                        <option>Ketchup</option>-->
+<!--                        <option>Barbecue</option>-->
+<!--                    </select>-->
+                    <select id="penWidth">
+                        <option value="1" selected>1px</option>
+                        <option value="2">2px</option>
+                        <option value="4">4px</option>
+                        <option value="6">6px</option>
+                        <option value="8">8px</option>
+                        <option value="12">12px</option>
+                        <option value="14">14px</option>
+                        <option value="16">16px</option>
+                        <option value="18">18px</option>
+                    </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 边框色模态框 -->
+<div class="modal" id="colorpicker1-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>边框颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 填充色模态框 -->
+<div class="modal" id="colorpicker2-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>填充颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup2" type="text" value="000000" style="width: 72px;display:none; "></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 字体大小模态框 -->
+<div class="modal" id="font1-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>字体大小 &nbsp;&nbsp;&nbsp;</span>
+                <select id="fontSize" >
+                    <option value="8px" selected>8px</option>
+                    <option value="10px">10px</option>
+                    <option value="12px">12px</option>
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px">18px</option>
+                    <option value="20px">20px</option>
+                    <option value="22px">22px</option>
+                    <option value="24px">24px</option>
+                    <option value="26px">26px</option>
+                    <option value="28px">28px</option>
+                    <option value="30px">30px</option>
+                    <option value="32px">32px</option>
+                    <option value="34px">34px</option>
+                    <option value="36px">36px</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 字体类型模态框 -->
+<div class="modal" id="font2-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">属性</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>字体类型 &nbsp;&nbsp;&nbsp;</span>
+                <select id="fontType" style="top:20px;" >
+                    <option value="宋体" >宋体</option>
+                    <option value="微软雅黑">微软雅黑</option>
+                    <option value="仿宋">仿宋</option>
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Consolas">Consolas</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 导航条标签：<nav></nav> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand"> EasyPaint</a>
+        <!-- 汉堡（折叠）按钮 -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        工具
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
+                            <label for="tools_pencil" style="font-size:20px" class="dropdown-item"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">
+                            <label for="tools_eraser" style="font-size:20px" class="dropdown-item"><img src="images/eraser-20.png"/> 橡皮擦</label>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="tools_trash" name="toolsOption" style="display: none">
+                            <label for="tools_trash" style="font-size:20px" class="dropdown-item"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
+                        </li>
+
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <input type="radio" id="tools_undo" style="display: none">
+                            <label for="tools_undo" style="font-size:20px" class="dropdown-item"><img src="images/undo-20.png"/>&nbsp;撤销</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_redo" style="display: none">
+                            <label for="tools_redo" style="font-size:20px" class="dropdown-item"><img src="images/redo-20.png"/>&nbsp;重做</label>
+                        </li>
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <input type="radio" id="tools_save" style="display: none">
+                            <label for="tools_save" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        形状
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <input type="radio" id="tools_line" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/line-20.png"/> 直线</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_dottedline" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/dashed-line-20.png"/> 虚线</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_rectangle" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/rectangular-20.png"/> 矩形</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="tools_circle" style="display: none">
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/a-20.png"/> 文字</label>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarLines" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        线条
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#line-width-modal"><img src="images/line-width-20.png"/>
+                                线条粗细
+                            </label>
+                        </li>
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker1-modal"><img src="images/window-color-20.png"/>
+                                边框颜色
+                            </label>
+                        </li>
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker2-modal"><img src="images/fill-color-20.png"/>
+                                填充颜色
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        字体
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#font1-modal"><img src="images/increase-font-20.png"/>
+                                字体大小
+                            </label>
+                        </li>
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#font2-modal"><img src="images/choose-font-20.png"/>
+                                字体类型
+                            </label>
+                        </li>
+
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <input type="checkbox" id="boldOption" name="fontOption" style="display: none">
+                            <label for="boldOption" class="dropdown-item">
+                                <img src="images/bold-20.png"/> 加粗
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="italicOption" name="italicOption" style="display: none">
+                            <label for="italicOption" class="dropdown-item">
+                                <img src="images/formatting-20.png"/> 斜体
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- 功能切换按钮 -->
+            <form class="d-flex">
+                <a href = "./EasyPaint1.html" class="btn btn-outline-light" > 画板绘图</a>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- 画布 -->
+<div class="container-fluid" id="DrawContainer">
+    <div class="row">
+        <div id="container">
+            <canvas id="myCanvas" class="container_pencil"></canvas>
+        </div>
+            <span class="col-lg-12" id="Copyright" >Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
+    </div>
+</div>
+
+</body>
+</html>
