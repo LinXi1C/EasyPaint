@@ -44,6 +44,12 @@
             border: 2px dashed gray;
         }
 
+        /*#div-img{*/
+        /*    width: 1900px;*/
+        /*    height: 800px;*/
+        /*    background: white;*/
+        /*}*/
+
     </style>
 </head>
 
@@ -135,7 +141,7 @@
         </div>
         <div style="clear:both;"></div>
     <div class="row">
-            <span class="col-lg-12" id="Copyright2" ><br/><input type="text" value="Copyright © 2021 张新宇, 徐泽. All rights reserved." style="margin-right:188px;border: none;width: 500px;color: gray">
+            <span class="col-lg-12" id="Copyright2" ><input type="text" value="Copyright © 2021 张新宇, 徐泽. All rights reserved." style="margin-right:188px;border: none;width: 500px;color: gray">
                 X：<input id="xLeftValue" style="border:none;width:83px;color:gray" /> ~<input id="xRightValue" style="border:none;width:83px;color:gray" />
                 Y：<input id="yLeftValue" style="border:none;width:83px;color:gray" /> ~<input id="yRightValue" style="border:none;width:83px;color:gray" />
                 <span id="show-size" style="display: none;">Size:</span>
@@ -158,8 +164,6 @@
         ctx.canvas.height = window.screen.availHeight-214;
         const FUN_IMG_WIDTH = ctx.canvas.width;  // 1000
         const FUN_IMG_HEIGHT = ctx.canvas.height;  // 800
-        alert(FUN_IMG_WIDTH);
-        alert(FUN_IMG_HEIGHT);
         var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值
         var xRightValue = FUN_IMG_WIDTH / 100;
         var yLeftValue = -FUN_IMG_HEIGHT / 100;
@@ -170,8 +174,6 @@
         var tmp;
     </script>
     <script>
-        CANVAS.width = FUN_IMG_WIDTH;
-        CANVAS.height = FUN_IMG_HEIGHT;
         j("show-size").innerHTML = "Size：" + FUN_IMG_WIDTH + "*" + FUN_IMG_HEIGHT;
 
         CANVAS.onmousedown = function(ob) {
