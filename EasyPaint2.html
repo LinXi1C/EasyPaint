@@ -133,17 +133,18 @@
 
 <!-- 画布 -->
 <div class="container-fluid" id="FuncContainer">
-    <div class="row">
         <div id="container">
             <div id="div-img">
-                <span id="show-size"  style="display: none"></span>
                 <canvas id="graph"></canvas>
             </div>
         </div>
         <div style="clear:both;"></div>
-    </div>
     <div class="row">
-        <span id="Copyright2">Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
+            <span class="col-lg-12" id="Copyright2" ><br/>Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
+<!--            X：<input id="xLeftValue" /> ~<input id="xRightValue" />-->
+<!--            Y：<input id="yLeftValue" /> ~<input id="yRightValue" />-->
+<!--            <span id="show-size" style="display: none">Size:</span>-->
+
     </div>
 </div>
 </body>
@@ -228,8 +229,6 @@
         }
         // 初始化
         reDraw();
-        update(); // update会被卡住出不来，无法刷新
-        Add();
-
+        update();
     </script>
 </html>

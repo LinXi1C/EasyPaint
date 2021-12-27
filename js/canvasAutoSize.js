@@ -27,7 +27,7 @@ var CanvasAutoResize2 = {
         var canvasContainer = document.getElementById('FuncContainer');
 
         ctx.canvas.width  = canvasContainer.offsetWidth-34;
-        ctx.canvas.height = window.screen.availHeight-220;
+        ctx.canvas.height = window.screen.availHeight-214;
 
     },
 
