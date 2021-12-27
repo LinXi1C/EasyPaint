@@ -5,15 +5,14 @@ var CanvasAutoResize = {
 
     ctx.canvas.width  = canvasContainer.offsetWidth-30;
     ctx.canvas.height = window.screen.availHeight-210;
-
     },
 
     initialize: function(){
         var self = CanvasAutoResize;
         self.draw();
-    //     $(window).on('resize', function(event){
-    //     self.draw();
-    // });
+        $(window).on('resize', function(event){
+        self.draw();
+    });
     }
 }
 
@@ -28,15 +27,14 @@ var CanvasAutoResize2 = {
 
         ctx.canvas.width  = canvasContainer.offsetWidth-34;
         ctx.canvas.height = window.screen.availHeight-214;
-
     },
 
     initialize: function(){
         var self = CanvasAutoResize2;
         self.draw();
-        // $(window).on('resize', function(event){
-        //     self.draw();
-        // });
+        $(window).on('resize', function(event){
+            self.draw();
+        });
     }
 }
 
