@@ -1,15 +1,19 @@
-<html>
+<!doctype html>
+<html lang = "zh-CN">
 <head>
-    <title>Painter</title>
+    <title>EasyPaint</title>
+
     <meta name="keywords" content="keyword1,keyword2,keyword3">
     <meta name="description" content="EasyPaint">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="referrer" content="no-referrer">
     <script type="text/javascript" src="jquery-ui-1.13.0.custom/external/jquery/jquery.js"></script>
+
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.structure.css" />
     <link rel="stylesheet" href="colorpicker/jquery.colorpicker.css" />
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
-
+    <link rel="stylesheet" href="css/myCSS.css" />
 
     <link rel = "stylesheet" href = "bootstrap/css/bootstrap.min.css">
     <script src = "bootstrap/js/jquery-3.6.0.min.js"></script>
@@ -23,51 +27,83 @@
     <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
     <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
     <script type="text/javascript" src="js/funcImage.js"></script>
+    <script type="text/javascript" src="js/canvasAutoSize.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/myJS.js"></script>
 
     <style type="text/css">
-    * {
-        font-family: '微软雅黑';
-        font-size:12px;
-    }
+        * {
+            font-family: '微软雅黑';
+            font-size: 20px;
+        }
 
-    canvas {
-        border: 2px dashed gray;
-    }
+        canvas {
+            margin-top: 10px;
+            border: 2px dashed gray;
+        }
 
-    .container_pencil{
-        cursor: url(images/pencil-20.png), pointer;
-    }
+        .container_pencil{
+            cursor: url(images/pencil-20.png), pointer;
+        }
 
-    .container_eraser{
-        cursor: url(images/eraser-20.png), pointer;
-    }
+        .container_eraser{
+            cursor: url(images/eraser-20.png), pointer;
+        }
 
-    .container_font{
-        cursor:crosshair;
-    }
-    .speed {
-        top: 15px;
-    }
+        .container_font{
+            cursor:crosshair;
+        }
+        .speed {
+            top: 15px;
+        }
 
-    .ui-selectmenu-text {
-        font-size: 12px;
-    }
+        .ui-selectmenu-text {
+            font-size: 12px;
+        }
 
-    #div-img{
-        width: 1000px;
-        height: 400px;
-        background: white;
-    }
-
+        #div-img{
+            width: 1900px;
+            height: 800px;
+            background: white;
+        }
     </style>
 </head>
 
 <body oncontextmenu="javascript:return false">
+
+<!-- 添加函数模态框 -->
+<div class="modal" id="function-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> 添加函数</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <span>线条粗细 &nbsp;&nbsp;&nbsp;</span>
+                <select id="penWidth">
+                    <option value="1" selected>1px</option>
+                    <option value="2">2px</option>
+                    <option value="4">4px</option>
+                    <option value="6">6px</option>
+                    <option value="8">8px</option>
+                    <option value="12">12px</option>
+                    <option value="14">14px</option>
+                    <option value="16">16px</option>
+                    <option value="18">18px</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 导航条标签：<nav></nav> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">EasyPaint</a>
+        <a class="navbar-brand"> EasyPaint</a>
         <!-- 汉堡（折叠）按钮 -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -76,243 +112,135 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- 导航条下拉标签 -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         工具
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                         <li>
-                            <a class="dropdown-item">
-                                <input type="radio" id="tools_pencil" name="toolsOption" checked="checked">
-                                <label for="tools_pencil" style="font-size:24px;"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
-                            </a>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#function-modal"><img src="images/formula-fx-20.png"/>
+                                添加函数
+                            </label>
                         </li>
 
+                        <!-- 导航条下拉标签分割线 -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <input type="radio" id="tools_save1" style="display: none">
+                            <label for="tools_save1" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
+                        </li>
+                    </ul>
+                </li>
 
-                        <li><a class="dropdown-item" href="#">橡皮擦</a></li>
-                        <li><a class="dropdown-item" href="#">清除画布</a></li>
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">撤销</a></li>
-                        <li><a class="dropdown-item" href="#">重做</a></li>
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">导出图片</a></li>
-                    </ul>
-                </li>
-                <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        形状
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">直线</a></li>
-                        <li><a class="dropdown-item" href="#">虚线</a></li>
-                        <li><a class="dropdown-item" href="#">矩形</a></li>
-                        <li><a class="dropdown-item" href="#">文字</a></li>
-                    </ul>
-                </li>
-                <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarLines" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        线条
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">线条粗细</a></li>
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">边框颜色</a></li>
-                        <li><a class="dropdown-item" href="#">填充颜色</a></li>
-                    </ul>
-                </li>
-                <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        字体
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">字体大小</a></li>
-                        <li><a class="dropdown-item" href="#">字体类型</a></li>
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">加粗</a></li>
-                        <li><a class="dropdown-item" href="#">倾斜</a></li>
-                    </ul>
-                </li>
+
             </ul>
-            <!-- 搜索栏与搜索按钮 -->
+            <!-- 功能切换按钮 -->
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <a href = "./EasyPaint1.html" class="btn btn-outline-light" > 画板绘图</a>
             </form>
         </div>
     </div>
 </nav>
 
-<div id="dialog" title="作图工具">
-	<div style="font-size:14px;">
-
-
-        <fieldset style="float:left;width:160px;">
-
-
-
-            <span style="font-weight:bold;"><input type="checkbox" id="boldOption" name="fontOption"><label for="boldOption">B</label></span></span>
-	        <span style="font-style: italic;"><input type="checkbox" id="italicOption" name="italicOption"><label for="italicOption">I</label></span></span>
-        </fieldset>
-
-        <fieldset style="float:left;width:160px;">
-            <legend>画笔绘图</legend>
-            <div style="background:white;" id="container">
-<!--            <div id="temp" style="border:1px solid gray;width:1px;height:1px;position:absolute;display:none;"></div>-->
-            <canvas id="myCanvas" width="1000" height="400" class="container_pencil"></canvas>
+<!-- 画布 -->
+<div class="container-fluid" id="FuncContainer">
+    <div class="row">
+        <div id="container">
+            <div id="div-img">
+                <span id="show-size"  style="display: none"></span>
+                <canvas id="graph" ></canvas>
             </div>
-        </fieldset>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    <fieldset style="float:left;">-->
-<!--        <legend>根据函数绘图</legend>-->
-<!--        <button id="tools_save1">保存为图片</button>-->
-<!--        <span></span>-->
-<!--        <button id='addfunc' onclick="Add()">添加函数</button>-->
-<!--            <div id="function">-->
-<!--                <span id="mod" style="display:none" name="0">-->
-<!--                   <input type="color"/> y=-->
-
-<!--                       <span style="margin-left:120px;width:18px;overflow:hidden;">-->
-<!--                           <select  style="width:50px;margin-left:-115px;" onchange="$(this).parent().next().val($(this).val())">-->
-<!--                           <option value="x">x</option>-->
-<!--                           <option value="x^2">eg2</option>-->
-<!--                           <option value="x^3">eg3</option>-->
-<!--                           <option value="sin(x)">eg4</option>-->
-<!--                           <option value="cos(x)">eg5</option>-->
-<!--                           </select></span>-->
-<!--                           <input type="text" name="Fun"  placeholder="请从左侧列表选择或手动输入一个函数：" style="width:30%;height:20px;border:1pt;border-radius:5px;outline:none">-->
-<!--                           <button onclick="Delete(this.parentNode)">删除</button>-->
-<!--                           <input type="checkbox" onclick="reDraw()" checked="checked"/>画图-->
-<!--                </span>-->
-<!--            </div>-->
-
-<!--                    &lt;!&ndash;&lt;!&ndash;这里是input框，定位到select的上面&ndash;&gt;&ndash;&gt;-->
-<!--                    &lt;!&ndash;<span  style="position:relative;width:20%;height:28px;border-radius:5px;">&ndash;&gt;-->
-<!--                    &lt;!&ndash;<input type="text" name="Fun" id="qlc_zdz" class="Fun" placeholder="可选择也可输入的下拉框" style="width:20%;height:24px;border:0pt;border-radius:5px;outline:0">&ndash;&gt;-->
-<!--                    &lt;!&ndash;</span>&ndash;&gt;-->
-
-
-<!--            <div style="border-top:1px dashed rgba(0,0,0,0.26);margin-top:8px;padding-top:8px;"><span>-->
-<!--            </span></div>-->
-<!--            <div id="option">-->
-<!--                X：<input id="xLeftValue" /> ~<input id="xRightValue" /><br>-->
-<!--                Y：<input id="yLeftValue" /> ~<input id="yRightValue" /><br>-->
-<!--                <span id="show-size">Size:</span>-->
-<!--            </div>-->
-<!--            <button onclick="change()">显示函数图像</button>-->
-
-<!--            <div id="div-img">-->
-<!--               <canvas id="graph" ></canvas>-->
-<!--            </div>-->
-<!--    </fieldset>-->
-<!--    </div>-->
-
-
+        </div>
         <div style="clear:both;"></div>
     </div>
+    <div class="row">
+        <span class="col-lg-12" id="Copyright">Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
+    </div>
 </div>
+
 </body>
 
-    <span id="show" style="display:none;"></span>
-<!--	<script>-->
-<!--		const FONT_STYLE = "10px 黑体";-->
-<!--		const MIN = 1e-4;-->
-<!--		const MAX = 1e8;-->
-<!--		const EPS = 1e-12;-->
-<!--		const CANVAS = j("graph");-->
-<!--		const CONTEXT_2D = CANVAS.getContext("2d");-->
-<!--		const FUN_IMG_WIDTH = CANVAS.parentNode.clientWidth;-->
-<!--		const FUN_IMG_HEIGHT = CANVAS.parentNode.clientHeight;-->
-<!--		var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值-->
-<!--		var xRightValue = FUN_IMG_WIDTH / 100;-->
-<!--		var yLeftValue = -FUN_IMG_HEIGHT / 100;-->
-<!--		var yRightValue = FUN_IMG_HEIGHT / 100;-->
-<!--		var tableX, tableY, countX, countY;-->
-<!--		var funStage = 0,-->
-<!--			mouseX, mouseY;-->
-<!--		var tmp;-->
-<!--	</script>-->
-<!--	<script>-->
-<!--		CANVAS.width = FUN_IMG_WIDTH;-->
-<!--		CANVAS.height = FUN_IMG_HEIGHT;-->
-<!--		j("show-size").innerHTML = "Size：" + FUN_IMG_WIDTH + "*" + FUN_IMG_HEIGHT;-->
+<span id="show" style="display:none;"></span>
+<script>
+    const FONT_STYLE = "10px 黑体";
+    const MIN = 1e-4;
+    const MAX = 1e8;
+    const EPS = 1e-12;
+    const CANVAS = j("graph");
+    const CONTEXT_2D = CANVAS.getContext("2d");
+    const FUN_IMG_WIDTH = CANVAS.parentNode.clientWidth;  // 1000
+    const FUN_IMG_HEIGHT = CANVAS.parentNode.clientHeight;  // 800
+    var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值
+    var xRightValue = FUN_IMG_WIDTH / 100;
+    var yLeftValue = -FUN_IMG_HEIGHT / 100;
+    var yRightValue = FUN_IMG_HEIGHT / 100;
+    var tableX, tableY, countX, countY;
+    var funStage = 0,
+        mouseX, mouseY;
+    var tmp;
+</script>
+<script>
+    CANVAS.width = FUN_IMG_WIDTH;
+    CANVAS.height = FUN_IMG_HEIGHT;
+    j("show-size").innerHTML = "Size：" + FUN_IMG_WIDTH + "*" + FUN_IMG_HEIGHT;
 
-<!--		CANVAS.onmousedown = function(ob) {-->
-<!--			mouseX = ob.layerX;-->
-<!--			mouseY = ob.layerY;-->
-<!--			funStage = 1;-->
-<!--		}-->
-<!--		CANVAS.onmousemove = function(ob) {-->
-<!--			if(funStage != 1) {-->
-<!--				return;-->
-<!--			}-->
-<!--			var NoX, NoY, det;-->
-<!--			NoX = ob.layerX;-->
-<!--			NoY = ob.layerY;-->
-<!--			det = (mouseX - NoX) / FUN_IMG_WIDTH * (xRightValue - xLeftValue);-->
-<!--			xLeftValue += det;-->
-<!--			xRightValue += det;-->
-<!--			det = (NoY - mouseY) / FUN_IMG_HEIGHT * (yRightValue - yLeftValue);-->
-<!--			yLeftValue += det;-->
-<!--			yRightValue += det;-->
-<!--			mouseX = NoX;-->
-<!--			mouseY = NoY;-->
-<!--			reDraw();-->
-<!--			update();-->
-<!--		}-->
-<!--		CANVAS.onmouseup = function(ob) {-->
-<!--			if(funStage == 1) {-->
-<!--				funStage = 0;-->
-<!--				reDraw();-->
-<!--			}-->
-<!--		}-->
-<!--		CANVAS.onmouseleave = function(ob) {-->
-<!--			if(funStage == 1) {-->
-<!--				funStage = 0;-->
-<!--				reDraw();-->
-<!--			}-->
-<!--		}-->
-<!--		CANVAS.onmousewheel = function(ob) {-->
-<!--			// 取消事件的默认动作-->
-<!--			ob.preventDefault();-->
-<!--			// 放大的比例-->
-<!--			var ScaleRate = 0.9;-->
-<!--			var detail;-->
-<!--			if(ob.wheelDelta) {-->
-<!--				detail = ob.wheelDelta;-->
-<!--			} else if(ob.detail) {-->
-<!--				detail = ob.detail;-->
-<!--			}-->
-<!--			if(detail > 0) {-->
-<!--				scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, ScaleRate);-->
-<!--			} else {-->
-<!--				scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, 1 / ScaleRate);-->
-<!--			}-->
-<!--			reDraw();-->
-<!--			update();-->
-<!--		}-->
-<!--		// 初始化-->
-<!--		reDraw();-->
-<!--		update();-->
-<!--		Add();-->
-<!--	</script>-->
+    CANVAS.onmousedown = function(ob) {
+        mouseX = ob.layerX;
+        mouseY = ob.layerY;
+        funStage = 1;
+    }
+    CANVAS.onmousemove = function(ob) {
+        if(funStage != 1) {
+            return;
+        }
+        var NoX, NoY, det;
+        NoX = ob.layerX;
+        NoY = ob.layerY;
+        det = (mouseX - NoX) / FUN_IMG_WIDTH * (xRightValue - xLeftValue);
+        xLeftValue += det;
+        xRightValue += det;
+        det = (NoY - mouseY) / FUN_IMG_HEIGHT * (yRightValue - yLeftValue);
+        yLeftValue += det;
+        yRightValue += det;
+        mouseX = NoX;
+        mouseY = NoY;
+        reDraw();
+        update();
+    }
+    CANVAS.onmouseup = function(ob) {
+        if(funStage == 1) {
+            funStage = 0;
+            reDraw();
+        }
+    }
+    CANVAS.onmouseleave = function(ob) {
+        if(funStage == 1) {
+            funStage = 0;
+            reDraw();
+        }
+    }
+    CANVAS.onmousewheel = function(ob) {
+        // 取消事件的默认动作
+        ob.preventDefault();
+        // 放大的比例
+        var ScaleRate = 0.9;
+        var detail;
+        if(ob.wheelDelta) {
+            detail = ob.wheelDelta;
+        } else if(ob.detail) {
+            detail = ob.detail;
+        }
+        if(detail > 0) {
+            scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, ScaleRate);
+        } else {
+            scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, 1 / ScaleRate);
+        }
+        reDraw();
+        update();
+    }
+    // 初始化
+    reDraw();
+    update();
+    Add();
+</script>
 
 </html>

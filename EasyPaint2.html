@@ -38,7 +38,7 @@
         }
 
         canvas {
-            margin-top: 4px;
+            margin-top: 10px;
             border: 2px dashed gray;
         }
 
@@ -62,8 +62,8 @@
         }
 
         #div-img{
-            width: 1000px;
-            height: 400px;
+            width: 1900px;
+            height: 800px;
             background: white;
         }
     </style>
@@ -71,131 +71,38 @@
 
 <body oncontextmenu="javascript:return false">
 
-<!-- 线条粗细模态框 -->
-<div class="modal" id="line-width-modal" tabindex="-1">
+<!-- 添加函数模态框 -->
+<div class="modal" id="function-modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">属性</h5>
+                <h5 class="modal-title"> 添加函数</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                    <span>线条粗细 &nbsp;&nbsp;&nbsp;</span>
-<!--                    <select class="selectpicker">-->
-<!--                        <option>Mustard</option>-->
-<!--                        <option>Ketchup</option>-->
-<!--                        <option>Barbecue</option>-->
-<!--                    </select>-->
-                    <select id="penWidth">
-                        <option value="1" selected>1px</option>
-                        <option value="2">2px</option>
-                        <option value="4">4px</option>
-                        <option value="6">6px</option>
-                        <option value="8">8px</option>
-                        <option value="12">12px</option>
-                        <option value="14">14px</option>
-                        <option value="16">16px</option>
-                        <option value="18">18px</option>
-                    </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- 边框色模态框 -->
-<div class="modal" id="colorpicker1-modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">属性</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <span>边框颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
+                <button id='addfunc' onclick="Add()">添加函数</button>
+                <div id="function">
+                <span id="mod" style="display:none" name="0">
+                   <input type="color"/> y =
+                       <span style="margin-left:120px;width:18px;overflow:hidden;">
+                           <select  style="width:50px;margin-left:-115px;" onchange="$(this).parent().next().val($(this).val())">
+                           <option value=" "> </option>
+                           <option value="x">x</option>
+                           <option value="x^2">x^2</option>
+                           <option value="x^3">x^3</option>
+                           <option value="sin(x)">sin(x)</option>
+                           <option value="cos(x)">cos(x)</option>
+                           </select>
+                       </span>
+                           <input type="text" name="Fun" placeholder="请从左侧列表选择或手动输入一个函数：" style="width:30%;height:20px;border:1pt;border-radius:5px;outline:none">
+                           <button onclick="Delete(this.parentNode)">删除</button>
+                </span>
+                </div>
 
-<!-- 填充色模态框 -->
-<div class="modal" id="colorpicker2-modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">属性</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <span>填充颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup2" type="text" value="000000" style="width: 72px;display:none; "></span>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 字体大小模态框 -->
-<div class="modal" id="font1-modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">属性</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <span>字体大小 &nbsp;&nbsp;&nbsp;</span>
-                <select id="fontSize" >
-                    <option value="8px" selected>8px</option>
-                    <option value="10px">10px</option>
-                    <option value="12px">12px</option>
-                    <option value="14px">14px</option>
-                    <option value="16px">16px</option>
-                    <option value="18px">18px</option>
-                    <option value="20px">20px</option>
-                    <option value="22px">22px</option>
-                    <option value="24px">24px</option>
-                    <option value="26px">26px</option>
-                    <option value="28px">28px</option>
-                    <option value="30px">30px</option>
-                    <option value="32px">32px</option>
-                    <option value="34px">34px</option>
-                    <option value="36px">36px</option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 字体类型模态框 -->
-<div class="modal" id="font2-modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">属性</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <span>字体类型 &nbsp;&nbsp;&nbsp;</span>
-                <select id="fontType" style="top:20px;" >
-                    <option value="宋体" >宋体</option>
-                    <option value="微软雅黑">微软雅黑</option>
-                    <option value="仿宋">仿宋</option>
-                    <option value="Arial" selected>Arial</option>
-                    <option value="Consolas">Consolas</option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal" onclick="change()">确定</button>
             </div>
         </div>
     </div>
@@ -218,121 +125,21 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
-                            <label for="tools_pencil" style="font-size:20px" class="dropdown-item"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
-                        </li>
-
-                        <li>
-                            <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">
-                            <label for="tools_eraser" style="font-size:20px" class="dropdown-item"><img src="images/eraser-20.png"/> 橡皮擦</label>
-                        </li>
-
-                        <li>
-                            <input type="radio" id="tools_trash" name="toolsOption" style="display: none">
-                            <label for="tools_trash" style="font-size:20px" class="dropdown-item"><img src="images/empty-trash-20.png"/>&nbsp;清除画布</label>
-                        </li>
-
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <input type="radio" id="tools_undo" style="display: none">
-                            <label for="tools_undo" style="font-size:20px" class="dropdown-item"><img src="images/undo-20.png"/>&nbsp;撤销</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="tools_redo" style="display: none">
-                            <label for="tools_redo" style="font-size:20px" class="dropdown-item"><img src="images/redo-20.png"/>&nbsp;重做</label>
-                        </li>
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <input type="radio" id="tools_save" style="display: none">
-                            <label for="tools_save" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarShapes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        形状
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <input type="radio" id="tools_line" style="display: none">
-                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/line-20.png"/> 直线</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="tools_dottedline" style="display: none">
-                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/dashed-line-20.png"/> 虚线</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="tools_rectangle" style="display: none">
-                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/rectangular-20.png"/> 矩形</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="tools_circle" style="display: none">
-                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/a-20.png"/> 文字</label>
-                        </li>
-                    </ul>
-                </li>
-                <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarLines" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        线条
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#line-width-modal"><img src="images/line-width-20.png"/>
-                                线条粗细
-                            </label>
-                        </li>
-                        <!-- 导航条下拉标签分割线 -->
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker1-modal"><img src="images/window-color-20.png"/>
-                                边框颜色
-                            </label>
-                        </li>
-                        <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker2-modal"><img src="images/fill-color-20.png"/>
-                                填充颜色
-                            </label>
-                        </li>
-                    </ul>
-                </li>
-                <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        字体
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#font1-modal"><img src="images/increase-font-20.png"/>
-                                字体大小
-                            </label>
-                        </li>
-                        <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#font2-modal"><img src="images/choose-font-20.png"/>
-                                字体类型
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#function-modal"><img src="images/formula-fx-20.png"/>
+                                添加函数
                             </label>
                         </li>
 
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <input type="checkbox" id="boldOption" name="fontOption" style="display: none">
-                            <label for="boldOption" class="dropdown-item">
-                                <img src="images/bold-20.png"/> 加粗
-                            </label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="italicOption" name="italicOption" style="display: none">
-                            <label for="italicOption" class="dropdown-item">
-                                <img src="images/formatting-20.png"/> 斜体
-                            </label>
+                            <input type="radio" id="tools_save1" style="display: none">
+                            <label for="tools_save1" style="font-size:20px" class="dropdown-item"><img src="images/output-20.png"/>&nbsp;导出图片</label>
                         </li>
                     </ul>
                 </li>
+
+
             </ul>
             <!-- 功能切换按钮 -->
             <form class="d-flex">
@@ -343,14 +150,105 @@
 </nav>
 
 <!-- 画布 -->
-<div class="container-fluid" id="DrawContainer">
+<div class="container-fluid" id="FuncContainer">
     <div class="row">
         <div id="container">
-            <canvas id="myCanvas" class="container_pencil"></canvas>
+            <div id="div-img">
+                <span id="show-size"  style="display: none"></span>
+                <canvas id="graph" ></canvas>
+            </div>
         </div>
-            <span class="col-lg-12" id="Copyright" >Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="row">
+        <span class="col-lg-12" id="Copyright">Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
     </div>
 </div>
 
 </body>
+
+<span id="show" style="display:none;"></span>
+    <script>
+        const FONT_STYLE = "10px 黑体";
+        const MIN = 1e-4;
+        const MAX = 1e8;
+        const EPS = 1e-12;
+        const CANVAS = j("graph");
+        const CONTEXT_2D = CANVAS.getContext("2d");
+        const FUN_IMG_WIDTH = CANVAS.parentNode.clientWidth;  // 1000
+        const FUN_IMG_HEIGHT = CANVAS.parentNode.clientHeight;  // 800
+        var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值
+        var xRightValue = FUN_IMG_WIDTH / 100;
+        var yLeftValue = -FUN_IMG_HEIGHT / 100;
+        var yRightValue = FUN_IMG_HEIGHT / 100;
+        var tableX, tableY, countX, countY;
+        var funStage = 0,
+            mouseX, mouseY;
+        var tmp;
+    </script>
+    <script>
+        CANVAS.width = FUN_IMG_WIDTH;
+        CANVAS.height = FUN_IMG_HEIGHT;
+        j("show-size").innerHTML = "Size：" + FUN_IMG_WIDTH + "*" + FUN_IMG_HEIGHT;
+
+        CANVAS.onmousedown = function(ob) {
+            mouseX = ob.layerX;
+            mouseY = ob.layerY;
+            funStage = 1;
+        }
+        CANVAS.onmousemove = function(ob) {
+            if(funStage != 1) {
+                return;
+            }
+            var NoX, NoY, det;
+            NoX = ob.layerX;
+            NoY = ob.layerY;
+            det = (mouseX - NoX) / FUN_IMG_WIDTH * (xRightValue - xLeftValue);
+            xLeftValue += det;
+            xRightValue += det;
+            det = (NoY - mouseY) / FUN_IMG_HEIGHT * (yRightValue - yLeftValue);
+            yLeftValue += det;
+            yRightValue += det;
+            mouseX = NoX;
+            mouseY = NoY;
+            reDraw();
+            update();
+        }
+        CANVAS.onmouseup = function(ob) {
+            if(funStage == 1) {
+                funStage = 0;
+                reDraw();
+            }
+        }
+        CANVAS.onmouseleave = function(ob) {
+            if(funStage == 1) {
+                funStage = 0;
+                reDraw();
+            }
+        }
+        CANVAS.onmousewheel = function(ob) {
+            // 取消事件的默认动作
+            ob.preventDefault();
+            // 放大的比例
+            var ScaleRate = 0.9;
+            var detail;
+            if(ob.wheelDelta) {
+                detail = ob.wheelDelta;
+            } else if(ob.detail) {
+                detail = ob.detail;
+            }
+            if(detail > 0) {
+                scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, ScaleRate);
+            } else {
+                scale(ob.layerX, FUN_IMG_HEIGHT - 1 - ob.layerY, 1 / ScaleRate);
+            }
+            reDraw();
+            update();
+        }
+        // 初始化
+        reDraw();
+        update(); // update会被卡住出不来，无法刷新
+        Add();
+
+    </script>
 </html>
