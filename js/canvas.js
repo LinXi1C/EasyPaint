@@ -594,6 +594,7 @@
                   // }
 				   function saveItAsImage1()
 				   {
+					   alert('111');
 					   var type = 'png';
 					   var imgData = $("#graph").get(0).toDataURL(type);
 
