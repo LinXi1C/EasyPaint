@@ -157,8 +157,12 @@
         const EPS = 1e-12;
         const CANVAS = j("graph");
         const CONTEXT_2D = CANVAS.getContext("2d");
-        const FUN_IMG_WIDTH = CANVAS.parentNode.clientWidth;  // 1000
-        const FUN_IMG_HEIGHT = CANVAS.parentNode.clientHeight;  // 800
+        var ctx = document.getElementById('graph').getContext('2d');
+        var canvasContainer = document.getElementById('FuncContainer');
+        ctx.canvas.width  = canvasContainer.offsetWidth-34;
+        ctx.canvas.height = window.screen.availHeight-214;
+        const FUN_IMG_WIDTH = ctx.canvas.width;  // 1000
+        const FUN_IMG_HEIGHT = ctx.canvas.height;  // 800
         var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值
         var xRightValue = FUN_IMG_WIDTH / 100;
         var yLeftValue = -FUN_IMG_HEIGHT / 100;
