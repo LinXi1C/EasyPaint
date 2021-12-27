@@ -44,11 +44,6 @@
             border: 2px dashed gray;
         }
 
-        #div-img{
-            width: 1900px;
-            height: 800px;
-            background: white;
-        }
     </style>
 </head>
 
@@ -163,6 +158,8 @@
         ctx.canvas.height = window.screen.availHeight-214;
         const FUN_IMG_WIDTH = ctx.canvas.width;  // 1000
         const FUN_IMG_HEIGHT = ctx.canvas.height;  // 800
+        alert(FUN_IMG_WIDTH);
+        alert(FUN_IMG_HEIGHT);
         var xLeftValue = -FUN_IMG_WIDTH / 100; // x最左的值
         var xRightValue = FUN_IMG_WIDTH / 100;
         var yLeftValue = -FUN_IMG_HEIGHT / 100;
