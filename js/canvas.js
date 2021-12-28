@@ -458,13 +458,12 @@
 				      //  $("#italicOption").button();
 				      
 				      //4. 画笔粗细设置	
-				      $("#penWidth").change({
+				      $("#penWidth").selectmenu({
 				          width:100,
-						  change:penWidthEventListener
+						  select:penWidthEventListener
 				      });
-				      
+
 				      function penWidthEventListener(event,ui){
-				    	  
 				    	  //1. update brash width
 				    	  var lineWidth = ui.item.value;
 			              ctx.lineWidth =lineWidth;

@@ -10,6 +10,12 @@
 //         $("#myModal").modal();
 //     });
 // });
-
+//
+// $(document).ready(function(){
+//     $.fn.modal.Constructor.prototype.enforceFocus = function() {
+//         $("#fontSize").focus();
+//         $("#font1-modal").focus();
+//     };
+// })
 
 
