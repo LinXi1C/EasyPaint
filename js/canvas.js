@@ -458,9 +458,9 @@
 				      //  $("#italicOption").button();
 				      
 				      //4. 画笔粗细设置	
-				      $("#penWidth").selectmenu({
+				      $("#penWidth").change({
 				          width:100,
-				          select:penWidthEventListener
+						  change:penWidthEventListener
 				      });
 				      
 				      function penWidthEventListener(event,ui){
