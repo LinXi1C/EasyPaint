@@ -2034,7 +2034,7 @@
 			showOn:				'focus click alt',		// 'focus', 'click', 'button', 'alt', 'both'
 			showOptions:		{},
 			swatches:			null,		// null for default or kv-object or names swatches set
-			swatchesWidth:		84,			// width (in number of pixels) of swatches box.
+			swatchesWidth:		50,			// width (in number of pixels) of swatches box.
 			title:				null,
 
 			cancel:             null,

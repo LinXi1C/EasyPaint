@@ -23,13 +23,10 @@
     <script type="text/javascript" src="js/anyLine.js"></script>
     <script type="text/javascript" src="colorpicker/jquery.colorpicker.js"></script>
     <script type="text/javascript" src="colorpicker/parts/jquery.ui.colorpicker-rgbslider.js"></script>
-    <script type="text/javascript" src="formulaeditor/js/FEditor.js"></script>
-    <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.js"></script>
-    <script type="text/javascript" src="formulaeditor/lib/mathquill-0.10.1/mathquill.min.js"></script>
-    <script type="text/javascript" src="js/funcImage.js"></script>
+<!--    <script type="text/javascript" src="js/funcImage.js"></script>-->
     <script type="text/javascript" src="js/canvasAutoSize.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
-    <script type="text/javascript" src="js/myJS.js"></script>
+<!--    <script type="text/javascript" src="js/myJS.js"></script>-->
 
     <style type="text/css">
         * {
@@ -79,7 +76,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <span>边框颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>
+                <span>边框/线条颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
@@ -97,7 +94,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <span>填充颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup2" type="text" value="000000" style="width: 72px;display:none; "></span>
+                <span>填充/字体颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup2" type="text" value="000000" style="width: 72px;display:none; "></span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
@@ -206,23 +203,23 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker1-modal"><img src="images/window-color-20.png"/>
-                                边框颜色
+                                边框/线条颜色
                             </label>
                         </li>
                         <li>
                             <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker2-modal"><img src="images/fill-color-20.png"/>
-                                填充颜色
+                                填充/字体颜色
                             </label>
                         </li>
                     </ul>
                 </li>
                 <!-- 导航条下拉标签 -->
-                <li class="nav-item dropdown" id = "test">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarFonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         字体
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li data-stopPropagation = 'True'>
+                        <li>
                             <label style="font-size:20px" class="dropdown-item"><img src="images/increase-font-20.png"/>
                                 字体大小
                                 <select id="fontSize" >
@@ -245,9 +242,9 @@
                             </label>
                         </li>
                         <li>
-                            <label style="font-size:20px" class="dropdown-item "><img src="images/choose-font-20.png"/>
+                            <label style="font-size:20px" class="dropdown-item"><img src="images/choose-font-20.png"/>
                                 字体类型
-                                <select id="fontType" class = "click_stop">
+                                <select id="fontType">
                                     <option value="宋体" selected>宋体</option>
                                     <option value="微软雅黑">微软雅黑</option>
                                     <option value="仿宋">仿宋</option>
