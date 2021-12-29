@@ -181,7 +181,7 @@ function getTable() {
 		var _text = (i * tableX).toFixed(countX);
 		var _x = tmp + 2;
 		var _y = 10;
-		CONTEXT_2D.fillText(_text, _x, _y);
+		CONTEXT_2D.fillText(_text, _x+4, _y+4);
 	}
 	tmp = (yRightValue - yLeftValue + EPS) / 20;
 	tableY = 1;
