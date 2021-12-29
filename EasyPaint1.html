@@ -103,6 +103,39 @@
     </div>
 </div>
 
+<!-- 关于模态框 -->
+<div class="modal" id="about-modal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">关于我们</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="container-fluid">
+                    <div class="row">
+                        <span class="col-lg-12"></br></span>
+                    </div>
+                <div class="row">
+                    <div class="col-lg-4"> <img src="images/NJU.png" width = "100%" height = "100%"/> </div>
+                    <span class="col-lg-8"> <span> EasyPaint v1.0 2021.12.29</span> </br>
+                        <span style="font-size: 18px">技术支持：开源软件</span></br>
+                        <span style="font-size: 18px">联系邮箱：xinyuzhang@smail.nju.edu.cn</span></br>
+                        <span style="font-size: 18px">Copyright © 2021 张新宇, 徐泽. All rights reserved.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <span class="col-lg-12"></br></span>
+            </div>
+            <div class="modal-footer">
+                <a href = "https://gitee.com/linxi1c/EasyPaint" class="btn btn-danger btn-sm" > 联系我们</a>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 导航条标签：<nav></nav> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -270,6 +303,18 @@
                         </li>
                     </ul>
                 </li>
+                <!-- 导航条下拉标签 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        帮助
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#about-modal"><img src="images/about-20.png"/>
+                                关于我们
+                            </label>
+                        </li>
+                    </ul>
             </ul>
             <!-- 功能切换按钮 -->
             <form class="d-flex">
