@@ -579,7 +579,7 @@
 						  event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 						  save_link.dispatchEvent(event);
 					  };
-					  var filename = '画图.' + type;
+					  var filename = '画板.' + type;
 					  saveFile(imgData,filename);
 				  }
 
