@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.css" />
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.structure.css" />
-    <link rel="stylesheet" href="colorpicker/jquery.colorpicker.css" />
+<!--    <link rel="stylesheet" href="colorpicker/jquery.colorpicker.css" />-->
     <link rel="stylesheet" href="jquery-ui-1.13.0.custom/jquery-ui.theme.css" />
     <link rel="stylesheet" href="css/myCSS.css" />
 
@@ -23,7 +23,6 @@
     <script type="text/javascript" src="js/anyLine.js"></script>
     <script type="text/javascript" src="colorpicker/jquery.colorpicker.js"></script>
     <script type="text/javascript" src="colorpicker/parts/jquery.ui.colorpicker-rgbslider.js"></script>
-<!--    <script type="text/javascript" src="js/funcImage.js"></script>-->
     <script type="text/javascript" src="js/canvasAutoSize.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
 <!--    <script type="text/javascript" src="js/myJS.js"></script>-->
@@ -291,13 +290,13 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <input type="checkbox" id="boldOption" name="fontOption" style="display: none">
-                            <label for="boldOption" class="dropdown-item">
+                            <label for="boldOption" class="dropdown-item" id = "bold">
                                 <img src="images/bold-20.png"/> 加粗
                             </label>
                         </li>
                         <li>
                             <input type="checkbox" id="italicOption" name="italicOption" style="display: none">
-                            <label for="italicOption" class="dropdown-item">
+                            <label for="italicOption" class="dropdown-item" id = "italic">
                                 <img src="images/formatting-20.png"/> 斜体
                             </label>
                         </li>
@@ -335,4 +334,13 @@
 </div>
 
 </body>
+
+<script>
+    $('#bold').click(function(){
+        $(this).toggleClass('active');
+    });
+    $('#italic').click(function(){
+        $(this).toggleClass('active');
+    });
+</script>
 </html>
