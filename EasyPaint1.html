@@ -67,11 +67,11 @@
 
 <body oncontextmenu="javascript:return false">
 <!-- 边框色模态框 -->
-<div class="modal" id="colorpicker1-modal" tabindex="-1">
+<div class="modal" id="colorpicker-modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">属性</h5>
+                <h5 class="modal-title"> 颜色属性</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -212,12 +212,12 @@
                 <!-- 导航条下拉标签 -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarLines" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        线条
+                        属性
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <label style="font-size:20px" class="dropdown-item" ><img src="images/line-width-20.png"/>
-                                线条粗细
+                                &nbsp;线条粗细
                                 <select id="penWidth">
                                     <option value="1">1px</option>
                                     <option value="2">2px</option>
@@ -234,14 +234,7 @@
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker1-modal"><img src="images/window-color-20.png"/>
-                                边框/线条颜色
-                            </label>
-                        </li>
-                        <li>
-                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker2-modal"><img src="images/fill-color-20.png"/>
-                                填充/字体颜色
-                            </label>
+                            <label style="font-size:20px" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#colorpicker-modal" ><img src="images/paint-palette-with-brush-30.png" style="margin-left:-5px; margin-right:1px;"/> 颜色相关</label>
                         </li>
                     </ul>
                 </li>
@@ -290,13 +283,13 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <input type="checkbox" id="boldOption" name="fontOption" style="display: none">
-                            <label for="boldOption" class="dropdown-item" id = "bold">
+                            <label for="boldOption" class="dropdown-item" id = "bold" style="font-size:20px">
                                 <img src="images/bold-20.png"/> 加粗
                             </label>
                         </li>
                         <li>
                             <input type="checkbox" id="italicOption" name="italicOption" style="display: none">
-                            <label for="italicOption" class="dropdown-item" id = "italic">
+                            <label for="italicOption" class="dropdown-item" id = "italic" style="font-size:20px">
                                 <img src="images/formatting-20.png"/> 斜体
                             </label>
                         </li>
