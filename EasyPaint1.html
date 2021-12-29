@@ -75,7 +75,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <span>边框/线条颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text"  value="000000" style="width: 72px;display:none; "></span>
+                <span>边框/线条颜色 &nbsp;&nbsp;&nbsp;<input id="colorpicker-popup" type="text" value="000000" style="width: 72px;display:none; "></span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">确定</button>
@@ -153,12 +153,12 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <input type="radio" id="tools_pencil" name="toolsOption" checked="checked" style="display: none">
-                            <label for="tools_pencil" style="font-size:20px" class="dropdown-item"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
+                            <label for="tools_pencil" style="font-size:20px" class="dropdown-item" id = "pencil"><img src="images/pencil-20.1.png"/>&nbsp;画笔</label>
                         </li>
 
                         <li>
                             <input type="radio" id="tools_eraser" name="toolsOption" style="display: none">
-                            <label for="tools_eraser" style="font-size:20px" class="dropdown-item"><img src="images/eraser-20.png"/> 橡皮擦</label>
+                            <label for="tools_eraser" style="font-size:20px" class="dropdown-item" id = "eraser"><img src="images/eraser-20.png"/> 橡皮擦</label>
                         </li>
 
                         <li>
@@ -193,19 +193,19 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <input type="radio" id="tools_line" name="toolsOption" style="display: none">
-                            <label for="tools_line" style="font-size:20px" class="dropdown-item"><img src="images/line-20.png"/> 直线</label>
+                            <label for="tools_line" style="font-size:20px" class="dropdown-item" id='line'><img src="images/line-20.png"/> 直线</label>
                         </li>
                         <li>
                             <input type="radio" id="tools_dottedline" name="toolsOption" style="display: none">
-                            <label for="tools_dottedline" style="font-size:20px" class="dropdown-item"><img src="images/dashed-line-20.png"/> 虚线</label>
+                            <label for="tools_dottedline" style="font-size:20px" class="dropdown-item" id='dottedline'><img src="images/dashed-line-20.png"/> 虚线</label>
                         </li>
                         <li>
                             <input type="radio" id="tools_rectangle" name="toolsOption" style="display: none">
-                            <label for="tools_rectangle" style="font-size:20px" class="dropdown-item"><img src="images/rectangular-20.png"/> 矩形</label>
+                            <label for="tools_rectangle" style="font-size:20px" class="dropdown-item" id='rectangle'><img src="images/rectangular-20.png"/> 矩形</label>
                         </li>
                         <li>
                             <input type="radio" id="tools_circle" name="toolsOption" style="display: none">
-                            <label for="tools_circle" style="font-size:20px" class="dropdown-item"><img src="images/a-20.png"/> 文字</label>
+                            <label for="tools_circle" style="font-size:20px" class="dropdown-item" id='text'><img src="images/a-20.png"/> 文字</label>
                         </li>
                     </ul>
                 </li>
@@ -334,7 +334,6 @@
 </div>
 
 </body>
-
 <script>
     $('#bold').click(function(){
         $(this).toggleClass('active');
@@ -342,5 +341,38 @@
     $('#italic').click(function(){
         $(this).toggleClass('active');
     });
+    $('#line').click(function(){
+        $(this).addClass('active');
+        $('#dottedline').removeClass('active')
+        $('#rectangle').removeClass('active')
+        $('#text').removeClass('active')
+    });
+    $('#dottedline').click(function(){
+        $(this).addClass('active');
+        $('#line').removeClass('active')
+        $('#rectangle').removeClass('active')
+        $('#text').removeClass('active')
+    });
+    $('#rectangle').click(function(){
+        $(this).addClass('active');
+        $('#line').removeClass('active')
+        $('#dottedline').removeClass('active')
+        $('#text').removeClass('active')
+    });
+    $('#text').click(function(){
+        $(this).addClass('active');
+        $('#line').removeClass('active')
+        $('#dottedline').removeClass('active')
+        $('#rectangle').removeClass('active')
+    });
+    $('#pencil').click(function(){
+        $(this).addClass('active');
+        $('#eraser').removeClass('active')
+    });
+    $('#eraser').click(function(){
+        $(this).addClass('active');
+        $('#pencil').removeClass('active')
+    });
+
 </script>
 </html>
