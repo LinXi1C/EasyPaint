@@ -584,37 +584,38 @@
 				  }
 
 
-				  $("#tools_save1").click(saveItAsImage1);
+				  // $("#tools_save1").click(saveItAsImage1);
 				  // function saveItAsImage1()
 				  // {
+					//   alert('111');
                   //     var image = $("#graph").get(0).toDataURL("image/png").replace("image/png", "image/octet-stream");
                   //     //locally save
                   //     window.location.href = image;
                   // }
-				   function saveItAsImage1()
-				   {
-					   alert('111');
-					   var type = 'png';
-					   var imgData = $("#graph").get(0).toDataURL(type);
-
-					   var _fixType = function(type) {
-						   type = type.toLowerCase().replace(/jpg/i, 'jpeg');
-						   var r = type.match(/png|jpeg|bmp|gif/)[0];
-						   return 'image/' + r;
-					   };
-					   imgData = imgData.replace(_fixType(type),'image/octet-stream');
-					   var saveFile = function(data, filename){
-						   var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-						   save_link.href = data;
-						   save_link.download = filename;
-
-						   var event = document.createEvent('MouseEvents');
-						   event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-						   save_link.dispatchEvent(event);
-					   };
-					   var filename = '画图.' + type;
-					   saveFile(imgData,filename);
-				   }
+				   // function saveItAsImage1()
+				   // {
+					//    alert('111');
+					//    var type = 'png';
+					//    var imgData = $("#graph").get(0).toDataURL(type);
+				   //
+					//    var _fixType = function(type) {
+					// 	   type = type.toLowerCase().replace(/jpg/i, 'jpeg');
+					// 	   var r = type.match(/png|jpeg|bmp|gif/)[0];
+					// 	   return 'image/' + r;
+					//    };
+					//    imgData = imgData.replace(_fixType(type),'image/octet-stream');
+					//    var saveFile = function(data, filename){
+					// 	   var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+					// 	   save_link.href = data;
+					// 	   save_link.download = filename;
+				   //
+					// 	   var event = document.createEvent('MouseEvents');
+					// 	   event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+					// 	   save_link.dispatchEvent(event);
+					//    };
+					//    var filename = '画图.' + type;
+					//    saveFile(imgData,filename);
+				   // }
 
 
 			      /**
