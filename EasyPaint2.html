@@ -159,6 +159,11 @@
                                 添加函数
                             </label>
                         </li>
+                        <li>
+                            <label style="font-size:20px" class="dropdown-item" id = "reset"><img src="images/abscissa-20.png"/>
+                                重置坐标轴
+                            </label>
+                        </li>
                         <!-- 导航条下拉标签分割线 -->
                         <li><hr class="dropdown-divider"></li>
                         <li>
@@ -231,6 +236,14 @@
         var funStage = 0,
             mouseX, mouseY;
         var tmp;
+        $('#reset').click(function(){
+            xLeftValue = -FUN_IMG_WIDTH / 100;
+            xRightValue = FUN_IMG_WIDTH / 100;
+            yLeftValue = -FUN_IMG_HEIGHT / 100;
+            yRightValue = FUN_IMG_HEIGHT / 100;
+            reDraw();
+            update();
+        });
     </script>
     <script>
         function saveItAsImage1()
