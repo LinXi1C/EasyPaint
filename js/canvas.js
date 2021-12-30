@@ -103,8 +103,8 @@
 			      function fakeWordsInput(e)
 			      {
 			    	  var offset = $("#myCanvas").offset();
-			          endX= e.pageX-offset.left;
-			          endY  = e.pageY-offset.top;
+			          endX = e.pageX-offset.left;
+			          endY = e.pageY-offset.top;
 			          if(flag)
 			            {
 			               fontTip.show();
@@ -117,8 +117,8 @@
 			      function fakeRectangleInput(e)
 			      {
 			      	    var offset = $("#myCanvas").offset();
-			            endX= e.pageX-offset.left;
-			            endY  = e.pageY-offset.top;
+			            endX = e.pageX-offset.left;
+			            endY = e.pageY-offset.top;
 			            var borderWidth  = $("#penWidth").val(); 
 			            if(flag)
 			            {
@@ -128,33 +128,32 @@
 			               console.log(flag);
 			            }
 			      }
-			      
-			      
+
 			      /**
 			      * 画线   
 			      */
 			      function fakeLineInput(e)
 			      {
 			      	    var offset = $("#myCanvas").offset();
-			            endX= e.pageX-offset.left;
-			            endY  = e.pageY-offset.top;
+			            endX = e.pageX-offset.left;
+			            endY = e.pageY-offset.top;
                         ctx.setLineDash([]);
 			     		if(flag)
 					    {
 						   lineTip.adjustLine({
-										beginX:x,
-										beginY:y,
-										endX:endX,
-										endY:endY,
-										parent:$("#myCanvas")
+							   beginX:x,
+							   beginY:y,
+							   endX:endX,
+							   endY:endY,
+							   parent:$("#myCanvas")
 						   })
 				        }
 			      }
 			      function fakeDottedLineInput(e)
 			      {
 			    	  var offset = $("#myCanvas").offset();
-			            endX= e.pageX-offset.left;
-			            endY  = e.pageY-offset.top;
+			            endX = e.pageX-offset.left;
+			            endY = e.pageY-offset.top;
 			     		if(flag) {
                             dottedlineTip.adjustLine({
                                 beginX: x,

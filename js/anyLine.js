@@ -99,10 +99,10 @@ jQuery.fn.extend({
      	data.parent = data.parent || $("body");
      	var x,y;
      	var offset = data.parent.offset();
-     	var width = data.endX -data.beginX;
-     	var height = data.endY-data.beginY;
+     	var width = data.endX - data.beginX;
+     	var height = data.endY - data.beginY;
      	
-     	var arctan =  Math.abs(height/width);
+     	var arctan = Math.abs(height/width);
      	var arc = Math.atan(arctan);
      	data.z = Math.sqrt(Math.pow((height),2)+Math.pow((width),2));
      	
