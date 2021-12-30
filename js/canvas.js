@@ -289,7 +289,7 @@
 			       */
 			      function drawRectangle(){
 	   		 			 var borderWidth  = $("#penWidth").val();
-	  					 ctx.fillRect(x+borderWidth,y+borderWidth,endX-x,endY-y);
+	  					 ctx.fillRect(x,y,endX-x,endY-y);
 					     ctx.strokeRect(x,y,endX-x,endY-y);
 					 	 $("#myCanvas").focus();
 					     rectTip.hide();
