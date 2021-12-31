@@ -1219,9 +1219,9 @@
 				_html = function () {
 					var html = '';
 
-					if (inst.options.alpha) {
-						html += '<div class="ui-colorpicker-a"><input class="ui-colorpicker-mode" name="mode" type="radio" value="a"/><label>' + inst._getRegional('alphaA') + '</label><input class="ui-colorpicker-number" type="number" min="0" max="100"/><span class="ui-colorpicker-unit">%</span></div>';
-					}
+					// if (inst.options.alpha) {
+					// 	html += '<div class="ui-colorpicker-a"><input class="ui-colorpicker-mode" name="mode" type="radio" value="a"/><label>' + inst._getRegional('alphaA') + '</label><input class="ui-colorpicker-number" type="number" min="0" max="100"/><span class="ui-colorpicker-unit">%</span></div>';
+					// }
 
 					return '<div class="ui-colorpicker-alpha">' + html + '</div>';
 				};
