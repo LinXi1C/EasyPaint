@@ -2009,11 +2009,6 @@
 				preview:	[2, 0, 1, 1],
 				hsv:		[2, 1, 1, 1],
 				rgb:		[2, 2, 1, 1],
-				alpha:		[2, 3, 1, 1],
-				hex:		[2, 4, 1, 1],
-				lab:		[3, 1, 1, 1],
-				cmyk:		[3, 2, 1, 2],
-				swatches:	[4, 0, 1, 5]
 			},
 			limit:				'',			// Limit color "resolution": '', 'websafe', 'nibble', 'binary', 'name'
 			modal:				false,		// Modal dialog?

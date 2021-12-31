@@ -168,6 +168,7 @@
 .ui-colorpicker-preview {
 	text-align:				center;
 	height:					20px;
+	border: 				none;
 }
 
 .ui-colorpicker-preview-initial {
@@ -176,7 +177,7 @@
 
 .ui-colorpicker-preview-initial,
 .ui-colorpicker-preview-current {
-    width:					50px;
+    width:					60px;
     height:					20px;
     display:				inline-block;
 }
@@ -202,7 +203,7 @@
 
 .ui-colorpicker-number {
 	margin:					.1em;
-	width:					4em;
+	width:					3em;
 }
 
 /* Hex */

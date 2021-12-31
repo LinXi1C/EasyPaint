@@ -500,9 +500,9 @@
 					  //5. 颜色选择器
 					  $("#colorpicker-popup").colorpicker({
 					     buttonColorize: true,
-					     alpha:          true,
-					     draggable:       true,
-				        showOn:         'both',
+					     alpha:          false,
+					     draggable:      true,
+				         showOn:         'both',
 					   	close:borderColorEventListener
 					  });
 					  
@@ -523,8 +523,8 @@
 					  //5. Fill Color Picker
 					  $("#colorpicker-popup2").colorpicker({
 					     buttonColorize: true,
-					     alpha:          true,
-					     draggable:       true,
+					     alpha:          false,
+					     draggable:      true,
 				         showOn:         'both',
 				         close:fillColorEventListener
 					  });
@@ -532,7 +532,7 @@
 					  function fillColorEventListener(e)
 					  {
 						  	var color= "#"+$(this).val();
-					   	   	ctx.fillStyle =color;
+					   	   	ctx.fillStyle = color;
 					   	   	rectTip.css({"background-color":color});
 					   	   	fontTip.css({"color":color});
 					  }
