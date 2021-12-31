@@ -1,6 +1,5 @@
-## EasyPaint
+## EasyPaint——全新的响应式布局
 
-### EasyPaint.html为全新响应式布局
 #### EasyPaint1.html：画板绘图
 #### EasyPaint2.html：函数绘图
 
