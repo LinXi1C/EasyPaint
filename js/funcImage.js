@@ -372,7 +372,7 @@ function getFunction() {
 		// 函数表达式
 		funcExpression = group[k].value;
 		// 是否画线（默认画点）
-		isDrawLine = true;
+		isDrawLine = _funcItem.children[3].checked;;
 
 		CONTEXT_2D.fillStyle = CONTEXT_2D.strokeStyle = color;
 
