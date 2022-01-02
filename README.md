@@ -5,7 +5,7 @@
 ## 打开它们，开始绘图！enjoy yourself！
 
 ## 1.关于我们
-<img align="left" src="images/NJU.png" width = "30%" height = "30%"/>
+<img align="left" src="images/NJU.png" width = "35%" height = "35%"/>
 
 EasyPaint v1.0 2021.12.31 
 
