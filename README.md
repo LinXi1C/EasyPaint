@@ -6,7 +6,6 @@
 
 ## 1.关于我们
 <img align="left" src="images/NJU.png" width = "40%" height = "40%"/>
-
 EasyPaint v1.0 2021.12.31 
 
 Powered by Bootstrap v5.1.3, jQuery v1.13.0 
