@@ -6,10 +6,15 @@
 
 ## 1.关于我们
 <img src="images/NJU.png" width = "30%" height = "30%"/>
-EasyPaint v1.0 2021.12.31 \
-Powered by Bootstrap v5.1.3, jQuery v1.13.0 \
-技术支持：开源软件 \
-联系邮箱：xinyuzhang@smail.nju.edu.cn \
+
+EasyPaint v1.0 2021.12.31 
+
+Powered by Bootstrap v5.1.3, jQuery v1.13.0 
+
+技术支持：开源软件 
+
+联系邮箱：xinyuzhang@smail.nju.edu.cn 
+
 Copyright © 2021 张新宇, 徐泽, 周家泽, 黄勇. All rights reserved.
 
 ## 2.开发日志
