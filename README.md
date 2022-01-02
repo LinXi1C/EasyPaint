@@ -1,9 +1,28 @@
-## EasyPaint——全新的响应式布局
-
+# EasyPaint
+## 便捷的在线绘图软件，支持画板绘图和函数绘图
 #### EasyPaint1.html：画板绘图
 #### EasyPaint2.html：函数绘图
+## 打开它们，开始绘图！enjoy yourself！
 
-TODO：紧急程度A>...>E \
+## 1.关于我们
+<div class="container-fluid">
+    <div class="row">
+        <span class="col-lg-12"></span>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"> <img src="images/NJU.png" width = "100%" height = "100%"/></div>
+        <span class="col-lg-8"> <span style="font-size: 24px; font-weight:bold"> EasyPaint v1.0 2021.12.31</span></br>
+            <span style="font-size: 18px">Powered by Bootstrap v5.1.3, jQuery v1.13.0</span></br>
+            <span style="font-size: 18px">技术支持：开源软件</span></br>
+            <span style="font-size: 18px">联系邮箱：xinyuzhang@smail.nju.edu.cn</span></br>
+            <span style="font-size: 16px">Copyright © 2021 张新宇, 徐泽, 周家泽, 黄勇. All rights reserved.</span>
+        </span>
+    </div>
+</div>
+
+## 2.开发日志
+
+TODO：紧急程度A>...>E </br></br>
 无
 
 Fixed：
