@@ -1,7 +1,3 @@
-    <link rel = "stylesheet" href = "bootstrap/css/bootstrap.min.css">
-<!--    <script src = "bootstrap/js/jquery-3.6.0.min.js"></script>-->
-    <script src = "bootstrap/js/bootstrap.min.js"></script>
-
 # EasyPaint
 ## 便捷的在线绘图软件，支持画板绘图和函数绘图
 #### EasyPaint1.html：画板绘图
@@ -9,20 +5,12 @@
 ## 打开它们，开始绘图！enjoy yourself！
 
 ## 1.关于我们
-<div class="container-fluid">
-    <div class="row">
-        <span class="col-lg-12"></span>
-    </div>
-    <div class="row">
-        <div class="col-lg-4"> <img src="images/NJU.png" width = "50%" height = "50%"/></div>
-        <span class="col-lg-8"> <span style="font-size: 24px; font-weight:bold"> EasyPaint v1.0 2021.12.31</span> \
-            <span style="font-size: 18px">Powered by Bootstrap v5.1.3, jQuery v1.13.0</span> \
-            <span style="font-size: 18px">技术支持：开源软件</span> \
-            <span style="font-size: 18px">联系邮箱：xinyuzhang@smail.nju.edu.cn</span> \
-            <span style="font-size: 16px">Copyright © 2021 张新宇, 徐泽, 周家泽, 黄勇. All rights reserved.</span>
-        </span>
-    </div>
-</div>
+<img src="images/NJU.png" width = "30%" height = "30%"/>
+EasyPaint v1.0 2021.12.31 \
+Powered by Bootstrap v5.1.3, jQuery v1.13.0 \
+技术支持：开源软件 \
+联系邮箱：xinyuzhang@smail.nju.edu.cn \
+Copyright © 2021 张新宇, 徐泽, 周家泽, 黄勇. All rights reserved.
 
 ## 2.开发日志
 
