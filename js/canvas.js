@@ -111,6 +111,7 @@
 						   })
 				        }
 			      }
+
 			      function fakeDottedLineInput(e)
 			      {
 			    	  var offset = $("#myCanvas").offset();
@@ -206,7 +207,6 @@
 				          	case 7	:	{   fontTip.focus();break;}
 						}
 			      });
-                  
 			      
 			      fontTip.blur(drawWords);
 			      $("#tools_undo").click(undo);
@@ -274,7 +274,6 @@
 		    		  }
 		    		  
 		    	  }
-
 
 				  // 重做
 				  function redo()
