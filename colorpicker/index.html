@@ -4,19 +4,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>jQuery.Colorpicker</title>
 
-		<!-- jQuery/jQueryUI (hosted) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
-		<!-- Markdown parser -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.min.js"></script>
 
-		<!-- Prettyprint -->
 		<link href="https://google-code-prettify.googlecode.com/svn/loader/prettify.css" rel="stylesheet" type="text/css"/>
 		<script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
 
-		<!-- Index -->
 		<style>
 			body {
 				font-family:			"Segoe UI", Verdana, Helvetica, Arial, sans-serif;
@@ -121,13 +117,10 @@
 						minlength	= 2E53,
 						l;
 
-					// Convert tabs to spaces
 					for (l in code) {
 						code[l] = tabsToSpaces(code[l], tabsize);
 					}
 
-
-					// determine minimum length
 					var minlength = 2E53;
 					var first = 2E53;
 					var last = 0;
@@ -141,12 +134,10 @@
 
 					code = code.slice(first, last + 1);
 
-					// strip tabs at start
 					for (l in code) {
 						code[l] = code[l].slice(minlength);
 					}
 
-					// recombine
 					code = code.join('\n');
 
 					var fragment = $('<pre class="prettyprint"><code/></pre>').text(code).insertAfter(element);
@@ -155,17 +146,14 @@
 					});
 				}
 
-				// extract html fragments
 				$('div.prettyprint, span.prettyprint').each(function() {
 					visualizeElement(this, 'HTML');
 				});
 
-				// extract scripts
 				$('script.prettyprint').each(function() {
 					visualizeElement(this, 'Javascript');
 				});
 
-				// Include the readme
 				var markdown = new Markdown.Converter();
 				$.get('README.md', function(readme) {
 					$('#readme').html(markdown.makeHtml(readme));
@@ -175,7 +163,6 @@
 					$('#readme pre').addClass('prettyprint');
 					prettyPrint();
 
-					// build menu
 					var menuitems = [];
 					$('h1').each(function() {
 						var text	= $(this).text(),
@@ -188,11 +175,9 @@
 			});
 		</script>
 
-		<!-- Plugin -->
 		<script src="jquery.colorpicker.js"></script>
 		<link href="jquery.colorpicker.css" rel="stylesheet" type="text/css"/>
 
-		<!-- Plugin extensions -->
 		<script src="i18n/jquery.ui.colorpicker-nl.js"></script>
 		<script src="parts/jquery.ui.colorpicker-rgbslider.js"></script>
 		<script src="parts/jquery.ui.colorpicker-memory.js"></script>

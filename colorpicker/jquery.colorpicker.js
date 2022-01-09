@@ -1,17 +1,3 @@
-/*jslint devel: true, bitwise: true, regexp: true, browser: true, confusion: true, unparam: true, eqeq: true, white: true, nomen: true, plusplus: true, maxerr: 50, indent: 4 */
-/*globals jQuery,Color */
-
-/*!
- * ColorPicker
- *
- * Copyright (c) 2011-2013 Martijn W. van der Lee
- * Licensed under the MIT.
- */
-/* Full-featured colorpicker for jQueryUI with full theming support.
- * Most images from jPicker by Christopher T. Tillman.
- * Sourcecode created from scratch by Martijn W. van der Lee.
- */
-
 ;(function ($) {
 	"use strict";
 
@@ -33,7 +19,6 @@
             var c,
                 m;
 
-            // {#}rrggbb
             m = /^#?([a-fA-F0-9]{1,6})$/.exec(color);
             if (m) {
                 c = parseInt(m[1], 16);
@@ -66,7 +51,6 @@
 				return a.pos[1] - b.pos[1];
 			});
 
-			// Determine dimensions of the table
 			width = 0;
 			height = 0;
 			$.each (layout, function(index, part) {
@@ -74,17 +58,14 @@
 				height = Math.max(height, part.pos[1] + part.pos[3]);
 			});
 
-			// Initialize bitmap
 			bitmap = [];
 			for (x = 0; x < width; ++x) {
 				bitmap.push([]);
 			}
 
-			// Mark rows and columns which have layout assigned
 			rows	= [];
 			columns = [];
 			$.each(layout, function(index, part) {
-				// mark columns
 				for (x = 0; x < part.pos[2]; x += 1) {
 					columns[part.pos[0] + x] = true;
 				}
@@ -93,7 +74,6 @@
 				}
 			});
 
-			// Generate the table
 			html = '';
 			cell = layout[index = 0];
 			for (y = 0; y < height; ++y) {
@@ -101,7 +81,6 @@
                 x = 0;
                 while (x < width) {
 					if (typeof cell !== 'undefined' && x === cell.pos[0] && y === cell.pos[1]) {
-						// Create a "real" cell
 						html += callback(cell, x, y);
 
 						for (h = 0; h < cell.pos[3]; h +=1) {
@@ -113,7 +92,6 @@
 						x += cell.pos[2];
 						cell = layout[++index];
 					} else {
-						// Fill in the gaps
 						colspan = 0;
 						walked = false;
 
@@ -371,7 +349,7 @@
 		,	'NAME':		function(color, that) {
 							return that._closestName(color);
 						}
-		,	'EXACT':	function(color, that) {		// @todo experimental. Implement a good fallback list
+		,	'EXACT':	function(color, that) {
 							return that._exactName(color);
 						}
 		};
@@ -588,7 +566,7 @@
 					x = Math.max(0, Math.min(x / width, 1));
 					y = Math.max(0, Math.min(y / height, 1));
 
-					// interpret values
+
 					switch (inst.mode) {
 					case 'h':
 						inst.color.setHSV(null, x, 1 - y);
@@ -779,7 +757,7 @@
 
 					y = Math.max(0, Math.min(y / height, 1));
 
-					// interpret values
+
 					switch (inst.mode) {
 					case 'h':
 						inst.color.setHSV(1 - y, null, null);
@@ -1219,10 +1197,6 @@
 				_html = function () {
 					var html = '';
 
-					// if (inst.options.alpha) {
-					// 	html += '<div class="ui-colorpicker-a"><input class="ui-colorpicker-mode" name="mode" type="radio" value="a"/><label>' + inst._getRegional('alphaA') + '</label><input class="ui-colorpicker-number" type="number" min="0" max="100"/><span class="ui-colorpicker-unit">%</span></div>';
-					// }
-
 					return '<div class="ui-colorpicker-alpha">' + html + '</div>';
 				};
 
@@ -1276,7 +1250,6 @@
 				this.init = function () {
 					e = $(_html()).appendTo($('.ui-colorpicker-hex-container', inst.dialog));
 
-					// repeat here makes the invalid input disappear faster
 					$('.ui-colorpicker-hex-input', e).bind('change keydown keyup', function (a, b, c) {
 						if (/[^a-fA-F0-9]/.test($(this).val())) {
 							$(this).val($(this).val().replace(/[^a-fA-F0-9]/, ''));
@@ -1284,7 +1257,6 @@
 					});
 
 					$('.ui-colorpicker-hex-input', e).bind('change keyup', function () {
-						// repeat here makes sure that the invalid input doesn't get parsed
 						inst.color = _parseHex($(this).val()).setAlpha(inst.color.getAlpha());
 						inst._change();
 					});
@@ -1381,10 +1353,9 @@
 					});
 
 					$('.ui-colorpicker-cancel', part).button().click(function () {
-						inst.close(true);   //cancel
+						inst.close(true);
 					});
 
-					//inst._getRegional('transparent')
 					$('.ui-colorpicker-buttonset', part).buttonset();
 
 					$('.ui-colorpicker-special-color', part).click(function () {
@@ -1426,7 +1397,7 @@
 							cmyk:	{c: 0, m: 0, y: 0, k: 1}
 						},
 				a = 1,
-				illuminant = [0.9504285, 1, 1.0889],	// CIE-L*ab D65/2' 1931
+				illuminant = [0.9504285, 1, 1.0889],
 				args = arguments,
 				_clip = function(v) {
 					if (isNaN(v) || v === null) {
@@ -1966,7 +1937,6 @@
 				return color;
 			};
 
-			// Construct
 			if (args.length === 2) {
 				spaces = args[0];
 				this.setAlpha(args[1] === 0 ? 0 : args[1] || 1);
@@ -1982,54 +1952,54 @@
 
 	$.widget("vanderlee.colorpicker", {
 		options: {
-			alpha:				false,		// Show alpha controls and mode
-			altAlpha:			true,		// change opacity of altField as well?
-			altField:			'',			// selector for DOM elements which change background color on change.
-			altOnChange:		true,		// true to update on each change, false to update only on close.
-			altProperties:		'background-color',	// comma separated list of any of 'background-color', 'color', 'border-color', 'outline-color'
-			autoOpen:			false,		// Open dialog automatically upon creation
-			buttonClass:		null,		// If set, the button will get this/these classname(s).
+			alpha:				false,
+			altAlpha:			true,
+			altField:			'',
+			altOnChange:		true,
+			altProperties:		'background-color',
+			autoOpen:			false,
+			buttonClass:		null,
 			buttonColorize:		false,
 			buttonImage:		'./images/ui-colorpicker.png',
 			buttonImageOnly:	false,
-			buttonText:			null,		// Text on the button and/or title of button image.
-			closeOnEscape:		true,		// Close the dialog when the escape key is pressed.
-			closeOnOutside:		true,		// Close the dialog when clicking outside the dialog (not for inline)
-			color:				'#00FF00',	// Initial color (for inline only)
-			colorFormat:		'HEX',		// Format string for output color format
-			draggable:			true,		// Make popup dialog draggable if header is visible.
-			containment:		null,		// Constrains dragging to within the bounds of the specified element or region.
+			buttonText:			null,
+			closeOnEscape:		true,
+			closeOnOutside:		true,
+			color:				'#00FF00',
+			colorFormat:		'HEX',
+			draggable:			true,
+			containment:		null,
 			duration:			'fast',
-			hsv:				true,		// Show HSV controls and modes
-			inline:				true,		// Show any divs as inline by default
-			inlineFrame:		true,		// Show a border and background when inline.
+			hsv:				true,
+			inline:				true,
+			inlineFrame:		true,
 			layout: {
-				map:		[0, 0, 1, 5],	// Left, Top, Width, Height (in table cells).
+				map:		[0, 0, 1, 5],	// Left, Top, Width, Height
 				bar:		[1, 0, 1, 5],
 				preview:	[2, 0, 1, 1],
 				hsv:		[2, 1, 1, 1],
 				rgb:		[2, 2, 1, 1],
 			},
-			limit:				'',			// Limit color "resolution": '', 'websafe', 'nibble', 'binary', 'name'
-			modal:				false,		// Modal dialog?
-			mode:				'h',		// Initial editing mode, h, s, v, r, g, b or a
-			okOnEnter:			false,		// Close (with OK) when pressing the enter key
-			parts:				'',			// leave empty for automatic selection
+			limit:				'',
+			modal:				false,
+			mode:				'h',
+			okOnEnter:			false,
+			parts:				'',
 			part: {
 				map:		{ size: 256 },
 				bar:		{ size: 256 }
-			},			// options per part
+			},
 			regional:			'',
-			revert:				false,		// Revert color upon non
-			rgb:				true,		// Show RGB controls and modes
+			revert:				false,
+			rgb:				true,
 			showAnim:			'fadeIn',
 			showCancelButton:	true,
 			showNoneButton:		false,
 			showCloseButton:	true,
-			showOn:				'focus click alt',		// 'focus', 'click', 'button', 'alt', 'both'
+			showOn:				'focus click alt',
 			showOptions:		{},
-			swatches:			null,		// null for default or kv-object or names swatches set
-			swatchesWidth:		50,			// width (in number of pixels) of swatches box.
+			swatches:			null,
+			swatchesWidth:		50,
 			title:				null,
 
 			cancel:             null,
@@ -2061,25 +2031,21 @@
 			that.mode		= that.options.mode;
 
 			if (that.element.is('input') || that.options.inline === false) {
-				// Initial color
 				that._setColor(that.element.is('input') ? that.element.val() : that.options.color);
 				that._callback('init');
 
-				// showOn focus
 				if (/\bfocus|both\b/.test(that.options.showOn)) {
 					that.element.bind('focus', function () {
 						that.open();
 					});
 				}
 
-				// showOn click
 				if (/\bclick|both\b/.test(that.options.showOn)) {
 					that.element.bind('click', function () {
 						that.open();
 					});
 				}
 
-				// showOn button
 				if (/\bbutton|both\b/.test(that.options.showOn)) {
 					if (that.options.buttonImage !== '') {
 						text = that.options.buttonText || that._getRegional('button');
@@ -2107,7 +2073,6 @@
 					});
 				}
 
-				// showOn alt
 				if (/\balt|both\b/.test(that.options.showOn)) {
 					$(that.options.altField).bind('click', function () {
 						that.open();
@@ -2149,9 +2114,6 @@
 			}
 		},
 
-		/**
-		 * If an alternate field is specified, set it according to the current color.
-		 */
 		_setAltField: function () {
 			if (this.options.altOnChange && this.options.altField && this.options.altProperties) {
 				var index,
@@ -2210,35 +2172,28 @@
 			$('body').append(_container_popup);
 			that.dialog = $('.ui-colorpicker:last');
 
-			// Close on clicking outside window and controls
 			$(document).delegate('html', 'touchstart click', function (event) {
 				if (!that.opened || event.target === that.element[0] || that.overlay) {
 					return;
 				}
 
-				// Check if clicked on any part of dialog
 				if (that.dialog.is(event.target) || that.dialog.has(event.target).length > 0) {
-					that.element.blur();	// inside window!
+					that.element.blur();
 					return;
 				}
 
-				// Check if clicked on known external elements
 				var p,
 					parents = $(event.target).parents();
-				// add the event.target in case of buttonImageOnly and closeOnOutside both are set to true
 				parents.push(event.target);
 				for (p = 0; p <= parents.length; ++p) {
-					// button
 					if (that.button !== null && parents[p] === that.button[0]) {
 						return;
 					}
-					// showOn alt
 					if (/\balt|both\b/.test(that.options.showOn) && $(that.options.altField).is(parents[p])) {
 						return;
 					}
 				}
 
-				// no closeOnOutside
 				if (!that.options.closeOnOutside) {
 					return;
 				}
@@ -2247,18 +2202,15 @@
 			});
 
 			$(document).keydown(function (event) {
-				// close on ESC key
 				if (that.opened && event.keyCode === 27 && that.options.closeOnEscape) {
 					that.close(that.options.revert);
 				}
 
-				// OK on Enter key
 				if (that.opened && event.keyCode === 13 && that.options.okOnEnter) {
 					that.close();
 				}
 			});
 
-			// Close (with OK) on tab key in element
 			that.element.keydown(function (event) {
 				if (event.keyCode === 9) {
 					that.close();
@@ -2285,19 +2237,16 @@
 
 			that[that.inline ? '_generateInline' : '_generatePopup']();
 
-			// Determine the parts to include in this colorpicker
 			if (typeof that.options.parts === 'string') {
 				if ($.colorpicker.partslists[that.options.parts]) {
 					parts_list = $.colorpicker.partslists[that.options.parts];
 				} else {
-					// automatic
 					parts_list = $.colorpicker.partslists[that.inline ? 'inline' : 'popup'];
 				}
 			} else {
 				parts_list = that.options.parts;
 			}
 
-			// Add any parts to the internal parts list
 			that.parts = {};
 			$.each(parts_list, function(index, part) {
 				if ($.colorpicker.parts[part]) {
@@ -2408,7 +2357,6 @@
 
 				that.dialog.css({'left': x, 'top': y});
 
-				// Automatically find highest z-index.
 				zIndex = 0;
 				$(that.element[0]).parents().each(function() {
 					var z = $(this).css('z-index');
@@ -2430,7 +2378,6 @@
 					}
 				});
 
-				// @todo zIndexOffset option, to raise above other elements?
 				that.dialog.css('z-index', zIndex += 2);
 
 				that.overlay = that.options.modal ? new $.ui.dialog.overlay(that) : null;
@@ -2445,8 +2392,6 @@
 				that.opened = true;
 				that._callback('open', true);
 
-				// Without waiting for domready the width of the map is 0 and we
-				// wind up with the cursor stuck in the upper left corner
 				$(function() {
 					that._repaintAllParts();
 				});
@@ -2466,7 +2411,6 @@
             }
 			that.changed		= false;
 
-			// tear down the interface
 			that._effectHide(that.dialog, function () {
 				that.dialog.remove();
 				that.dialog	= null;
@@ -2561,12 +2505,10 @@
 		_change: function () {
 			this.changed = true;
 
-			// Limit color palette
 			if (this.options.limit && $.colorpicker.limits[this.options.limit]) {
 				$.colorpicker.limits[this.options.limit](this.color, this);
 			}
 
-			// update input element content
 			if (!this.inline) {
 				if (!this.color.set) {
 					this.element.val('');
@@ -2578,18 +2520,15 @@
 				this._setAltField();
 			}
 
-			// update color option
 			this.options.color = this.color.set ? this.color.toCSS() : '';
 
 			if (this.opened) {
 				this._repaintAllParts();
 			}
 
-			// callback
 			this._callback('select');
 		},
 
-		// This will be deprecated by jQueryUI 1.9 widget
 		_hoverable: function (e) {
 			e.hover(function () {
 				e.addClass("ui-state-hover");
@@ -2598,7 +2537,6 @@
 			});
 		},
 
-		// This will be deprecated by jQueryUI 1.9 widget
 		_focusable: function (e) {
 			e.focus(function () {
 				e.addClass("ui-state-focus");
@@ -2694,7 +2632,7 @@
 				if (d < distance || distance === null) {
 					name = n;
 					if (d === 0) {
-						return false;	// can't get much closer than 0
+						return false;
 					}
 					distance = d;
 				}

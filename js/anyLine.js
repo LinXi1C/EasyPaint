@@ -1,12 +1,5 @@
-/**
- * This extension is for appending any directions 
- */
-
 jQuery.fn.extend({
-	
-	/**
-	 * 添加线段
-	 */
+	 // 添加线段
      appendLine:function(){
         var offset = $(this).offset();
      	var data = arguments[0]||{};
@@ -87,9 +80,8 @@ jQuery.fn.extend({
      	$(this).append(newOne);
      	return newOne;
      },
-     /**
-      * 调整线条的位置
-      */
+
+     // 调整线条的位置
      adjustLine:function(){
     	var data = arguments[0]||{}; 
       	data.beginX = data.beginX || 0;
@@ -107,7 +99,7 @@ jQuery.fn.extend({
      	data.z = Math.sqrt(Math.pow((height),2)+Math.pow((width),2));
      	
      	var angle = (arc/Math.PI)*180;
-     	//第一象限
+     	// 第一象限
      	if(width>0 && height>0)
      	{
      		y = (data.z *Math.sin(arc))/2;

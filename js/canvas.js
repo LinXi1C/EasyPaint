@@ -1,61 +1,32 @@
-/**
- * 
- */
-
     $(function(){
     
 		       (function(){
 			      var x,y,endX,endY;
-		    	  
-			      //undo redo
-			      var history =new Array();
+
+			      var history = new Array();
 		    	  var cStep = -1;
-		    	  
-		    	  // simulate line rectangle input dialog when you interact with the UI
+
 			      var lineTip = $("#container").appendLine({width:"1px",type:"solid",color:"red",beginX:0,beginY:0,endX:1,endY:1});
 			      var dottedlineTip = $("#container").appendLine({width:"1px",type:"dashed",color:"blue",beginX:0,beginY:0,endX:1,endY:1});
 			      var rectTip = $(" <div style='border:1px solid gray; width:1px;height:1px;position:absolute;display:none;'></div>");
 			      var fontTip =$("<textarea rows='3' cols='20' style='background:transparent;position:absolute;display:none;'></textarea>"); 
 			      $("#container").append(rectTip);
 			      $("#container").append(fontTip);
-			      
-			      
-			      
+
 			      var flag = false;
 			      var ctx=document.getElementById("myCanvas").getContext("2d");
-			      /**
-			       * Every function in this app has a corresponding command code:
-			       * --------------------------------------------------
-			       * function			command code		description
-			       * --------------------------------------------------
-			       * brash(pencil)			1				use it as a pencil to draw 
-			       * eraser					2				use it as a eraser to erase some spots
-			       * trash					3 				you can clean the whole canvas
-			       * draw line				4				draws straight lines
-			       * draw rectangle			5				draw rectangles
-			       * draw words				6				you can input words on the canvas			
-			       * 
-			       */
-			      
-			      
-			      // Every function has different canvas context and cursor style
-			      // therefore, we create a callback list to .....
-			      // 1.	switch the canvas context
-			      // 2. switch the cursor style when the mouse is on the canvas 
+
 			      var command = 1;
 			      var commandCallbacks = $.Callbacks();
 			      commandCallbacks.add(switchCanvasContext);
 			      commandCallbacks.add(switchCursorStyle);
-			      
-			      // By default,
+
 			      $("#tools_pencil").trigger("click");
 			      commandCallbacks.fire(command);
 			      
 			      initUI();
-			      
-			      
-			      
-			      // command emitter
+
+				  // 通过command值进行工具切换
 			      $("[name='toolsOption']").change(function(){
 			    	  var val = $(this).val();
 			    	  var type = $(this).attr("id");
@@ -72,16 +43,12 @@
 				    		  case "tools_circle"		:{command=7;break;}
 				    		  default 					:{command=1;};
 			    		  }
-			    		  //initialize canvas context and cursor style
 			    		  commandCallbacks.fire(command);
 			    	  }	
 			      });
 			      
 			      $("#container").mousemove(mouseMoveEventHandler);
-			      
-			      /**
-			       * In different function circumstances, the Mouse Move Event should be handled in different behalf.
-			       */
+
 			      function mouseMoveEventHandler(e)
 			      {
 			          switch(command)
@@ -94,12 +61,8 @@
 			          	case 7	:	{   fakeWordsInput(e);break;    }
 			          }
 			      }
-			      
-			      
-			      /**
-			       * When you want to input some words on the canvas, the Input User Interface should be offered.
-			       * you can drag a line on the canvas while  mouse button is pressed down
-			       */
+
+				  // 输入指示框
 			      function fakeWordsInput(e)
 			      {
 			    	  var offset = $("#myCanvas").offset();
@@ -114,6 +77,7 @@
 			            }
 			      }
 
+				  // 指示矩形
 			      function fakeRectangleInput(e)
 			      {
 			      	    var offset = $("#myCanvas").offset();
@@ -129,9 +93,7 @@
 			            }
 			      }
 
-			      /**
-			      * 画线   
-			      */
+			      // 指示线
 			      function fakeLineInput(e)
 			      {
 			      	    var offset = $("#myCanvas").offset();
@@ -166,9 +128,8 @@
                         }
 			      }
 			      
-			      //draw free line
+			      // 画笔
 			      function drawPencil(e){
-			            //if the mouse button is pressed down,draw the mouse moving trace.
 			            if(flag)
 			            {
 			            	 var offset = $("#myCanvas").offset();
@@ -180,7 +141,6 @@
 			            }
 						else
 						{
-							// set the begin path for brash
 							ctx.beginPath();
 						    var offset = $("#myCanvas").offset();
 			            	var x = e.pageX-offset.left;
@@ -189,9 +149,7 @@
 						}
 			      }
 
-			      /**
-			      * clear canvas
-			      */
+			      // 清除画板
 			      function clearCanvas()
 			      {
 			      		ctx.fillStyle="#FFFFFF";
@@ -200,12 +158,10 @@
 						ctx.fillRect(0,0,width,height);	
 			      }
 			      
-			      
+			      // 鼠标事件
 			      $("#container").mousedown(function(e){
-			    	  
-			    	  	// set mousedown flag for mousemove event
-			             flag=true;
-			             //set the begin path of the brash
+
+			             flag = true;
 			             var offset = $("#myCanvas").offset();
 			             x = e.pageX-offset.left;
 						 y = e.pageY-offset.top;
@@ -232,12 +188,12 @@
 				          	case 7	:	{   break;    }
 						 }
 			      });
-			      
+
+				  // 鼠标事件
 			      $("#container").mouseup(function(e){
 			      
 			            flag=false;
-			            
-			            // records operations history for undo or redo
+
 			            historyPush();	
     					
 						switch(command)
@@ -255,12 +211,8 @@
 			      fontTip.blur(drawWords);
 			      $("#tools_undo").click(undo);
 			      $("#tools_redo").click(redo);
-			      
-			      
-			      
-			      /**
-			       * function: draw straight line 
-			       */
+
+				  // 直线
 			      function drawline(){
                          ctx.setLineDash([]);
 		          		 ctx.beginPath();
@@ -270,10 +222,8 @@
 					     ctx.stroke();
 					     lineTip.hide();
 			      }
-			      
-			      /**
-			       * function: draw dotted line
-			       */
+
+				  // 虚线
 			      function drawDashed(){
                         ctx.beginPath();
                         var offset = $("#myCanvas").offset();
@@ -284,9 +234,7 @@
                         ctx.stroke();
 					}
 
-			      /**
-			       * function : draw  rectangle
-			       */
+				  // 矩形
 			      function drawRectangle(){
 	   		 			 var borderWidth  = $("#penWidth").val();
 	  					 ctx.fillRect(x,y,endX-x,endY-y);
@@ -294,10 +242,8 @@
 					 	 $("#myCanvas").focus();
 					     rectTip.hide();
 			      }
-			      
-			      /**
-			       * function: 	Draw Words 
-			       */
+
+				  // 文字
 			      function drawWords(e){
 			    	  var words = fontTip.val().trim();
       					if(	fontTip.css("display")!= "none" && words )
@@ -315,9 +261,7 @@
       					fontTip.hide();
 			      }
 			      
-		    	  /**
-		    	   * function: undo 
-		    	   */
+				  // 撤销
 		    	  function undo()
 		    	  {
 		    		  if (cStep >= 0) 
@@ -330,11 +274,9 @@
 		    		  }
 		    		  
 		    	  }
-		    	  
-                 
-		    	  /**
-		    	   * function:  redo
-		    	   */
+
+
+				  // 重做
 				  function redo()
 				  {
 		    		  if (cStep <history.length-1) 
@@ -346,147 +288,50 @@
 		    			  tempImage.onload = function () { ctx.drawImage(tempImage, 0, 0); };
 		    		  }
 				  }
-				  
-				  
-				  //// define function
+
+				  // 初始化窗口
 				  function initUI()
 			      {
-					   // 界面UI初始化，对话框
-				       // $( "#dialog" ).dialog(
-				       // 			{
-						// 			autoOpen: true,
-						// 			show: {
-						// 				effect: "blind",
-						// 				duration: 920
-						// 			},
-						// 			hide: {
-						// 				effect: "explode",
-						// 				duration: 920
-						// 			},
-						// 			height:650,
-						// 			width:1100
-						// 		});
-									
-					  //2. canvas 被拖动，重新设置画板大小（因为拖动是css效果，而实际画板大小是width 和height属性）				
+					  // canvas 被拖动，重新设置画板大小（因为拖动是css效果，而实际画板大小是width和height属性）
 				      $("#myCanvas").resizable({
 					      stop:function(event,ui){
 					            var height =  $("#myCanvas").height();
 					            var width =$("#myCanvas").width();
 					            $("#myCanvas").attr("width",width);
 					            $("#myCanvas").attr("height",height);
-					            //画板大小改变，画笔也会被初始化，这里将画笔复原
+					            // 画板大小改变，画笔也会被初始化，这里将画笔复原
 					            switchCanvasContext();
 					      },
 				      	grid: [ 20, 10 ]
 				      });
 				      
-				      // //3. 工具条
-				      // $("#tools_pencil").button({
-				      //   icons:{
-				      //      primary:"ui-icon-arrowreturnthick-1-n"
-				      //   }
-				      // });
-					  //
-				      // $("#tools_eraser").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-bullet"
-				      //   // }
-				      // });
-					  //
-				      // $("#tools_trash").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-trash"
-				      //   // }
-				      // });
-				      //
-				      // $("#tools_save").button({
-				    	//   // icons:{
-				    	// 	//   primary:"ui-icon-disk"
-				    	//   // }
-				      // });
-					  //
-					  // $("#tools_save1").button({
-				    	//   // icons:{
-				    	// 	//   primary:"ui-icon-disk"
-				    	//   // }
-				      // });
-					  //
-				      // $("#addfunc").button({
-				    	//   // icons:{
-				    	// 	//   primary:"ui-icon-pencil"
-				    	//   // }
-				      // });
-					  //
-				      // $("#tools_undo").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-arrowreturnthick-1-n"
-				      //   // }
-				      // });
-				      //
-				      //  $("#tools_redo").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-arrowreturnthick-1-e"
-				      //   // }
-				      // });
-					  //
-				      //  $("#tools_line").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-minusthick"
-				      //   // }
-				      // });
-					  //
-				      //  $("#tools_dottedline").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-minusthick"
-				      //   // }
-				      // });
-					  //
-				      //  $("#tools_rectangle").button({
-				      //   // icons:{
-				      //   //    primary:"ui-icon-stop"
-				      //   // }
-				      // });
-					  //
-				      //  $("#tools_circle").button({
-				      //      // icons:{
-				      //      // 		primary:"ui-icon-radio-off"
-				      //      // }
-				      //  });
-					  //
-				      //  $("#boldOption").button();
-				      //  $("#italicOption").button();
-				      
-				      //4. 画笔粗细设置	
+				      // 画笔粗细设置
 				      $("#penWidth").selectmenu({
 				          width:100,
 						  select:penWidthEventListener
 				      });
 
 				      function penWidthEventListener(event,ui){
-				    	  //1. update brash width
+				    	  // 1. 更新画笔粗细
 				    	  var lineWidth = ui.item.value;
 			              ctx.lineWidth =lineWidth;
 			              
-			              //2. update LineTip Width
+			              // 2. 更新线条粗细
 			              lineTip.css("border-top-width",lineWidth+"px");
 			              dottedlineTip.css("border-top-width",lineWidth+"px");
 			              
-			              //3.update RectTip width
+			              // 3. 更新边框粗细
 			              rectTip.css("border-width",lineWidth+"px");
 			              return false;
 				      }
-				      
-				      
-				      
+
 				      $("#fontSize").selectmenu({
 				    	  width:100,
 				    	  select:function(event,ui){
 				    		  setFont();
 				    	  }
 				      });
-				      
-				      
-				      
+
 				      $("#fontType").selectmenu({
 				    	  width:100,
 				    	  select:function(event,ui){
@@ -497,7 +342,7 @@
 					
 				      setFont();
 				      
-					  //5. 颜色选择器
+					  // 调用颜色选择器，边框（线条）颜色
 					  $("#colorpicker-popup").colorpicker({
 					     buttonColorize: true,
 					     alpha:          false,
@@ -508,19 +353,16 @@
 					  
 					  function borderColorEventListener(e)
 					  {
-						  // 1. set brash context
 						  var color= "#"+$(this).val();
 					   	  ctx.strokeStyle =color;
-						  
-						  // 2. set tips info
+
 					   	  lineTip.css({"border-color":color});
 					   	  dottedlineTip.css({"border-color":color});
 					   	  rectTip.css({"border-color":color});
-					   	  //fontTip.css({"border-color":color});
 					  }
-					  
-					  
-					  //5. Fill Color Picker
+
+
+					  // 用颜色选择器，填充（文字）颜色
 					  $("#colorpicker-popup2").colorpicker({
 					     buttonColorize: true,
 					     alpha:          false,
@@ -547,16 +389,18 @@
 			    	  var size = $("#fontSize").val();
 			    	  var type = $("#fontType").val();
 			    	  var color = "#" +$("#colorpicker-popup2").val();
-			    	  
+
+					  // 加粗
 			    	  var fontWeight = $("#boldOption").get(0).checked;
 			    	  fontWeight = fontWeight ? "bold" : " ";
-			    	  
+					  // 斜体
 			    	  var fontItalic =$("#italicOption").get(0).checked;
 			    	  fontItalic = fontItalic ? " italic " : " ";
 			    	  ctx.font = fontItalic+ fontWeight+" " +size+" "+type;
 			    	  fontTip.css({"font-size":size,"font-family":type,color:color,"font-style":fontItalic,"font-weight":fontWeight});
 			      }
-				  
+
+				 // 保存图片
 				 $("#tools_save").click(saveItAsImage);
 				   function saveItAsImage()
 				  {
@@ -582,44 +426,7 @@
 					  saveFile(imgData,filename);
 				  }
 
-
-				  // $("#tools_save1").click(saveItAsImage1);
-				  // function saveItAsImage1()
-				  // {
-					//   alert('111');
-                  //     var image = $("#graph").get(0).toDataURL("image/png").replace("image/png", "image/octet-stream");
-                  //     //locally save
-                  //     window.location.href = image;
-                  // }
-				   // function saveItAsImage1()
-				   // {
-					//    alert('111');
-					//    var type = 'png';
-					//    var imgData = $("#graph").get(0).toDataURL(type);
-				   //
-					//    var _fixType = function(type) {
-					// 	   type = type.toLowerCase().replace(/jpg/i, 'jpeg');
-					// 	   var r = type.match(/png|jpeg|bmp|gif/)[0];
-					// 	   return 'image/' + r;
-					//    };
-					//    imgData = imgData.replace(_fixType(type),'image/octet-stream');
-					//    var saveFile = function(data, filename){
-					// 	   var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-					// 	   save_link.href = data;
-					// 	   save_link.download = filename;
-				   //
-					// 	   var event = document.createEvent('MouseEvents');
-					// 	   event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-					// 	   save_link.dispatchEvent(event);
-					//    };
-					//    var filename = '画图.' + type;
-					//    saveFile(imgData,filename);
-				   // }
-
-
-			      /**
-			       * put current canvas to cache
-			       */
+				  // 保存历史操作
 			      function historyPush()
 			      {
 			          cStep++;
@@ -629,11 +436,7 @@
     				  }
     				  history.push($("#myCanvas").get(0).toDataURL());
 			      }
-			      
-			      
-				  /**
-				   * switch the canvas context for different command
-				   */
+
 			      function switchCanvasContext(command)
 			      {
 			          ctx.lineWidth = $("#penWidth").val();
@@ -660,12 +463,7 @@
 			          }
 				   	  return ctx;
 			      }
-			      
 
-			      
-			      /**
-			      *  switch cursor style for different command
-			      */
 			      function switchCursorStyle(command) {
                       Label:if (command === 1) {
                           {
@@ -697,6 +495,5 @@
                           }
                       }
                   }
-
        })();
     });
