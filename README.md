@@ -2,10 +2,9 @@
 ## 便捷的在线绘图软件，支持画板绘图和函数绘图
 #### EasyPaint1.html：画板绘图
 #### EasyPaint2.html：函数绘图
-## 打开它们，开始绘图！enjoy yourself！
 
 ## 1.关于我们
-<img align="left" src="images/NJU.png" width = "40%" height = "40%"/>
+<img align="left" src="images/NJU.png" width = "10%" height = "10%"/>
 EasyPaint v1.0 2021.12.31 
 
 Powered by Bootstrap v5.1.3, jQuery v1.13.0 
@@ -15,6 +14,8 @@ Powered by Bootstrap v5.1.3, jQuery v1.13.0
 联系邮箱：xinyuzhang@smail.nju.edu.cn 
 
 Copyright © 2021 张新宇, 徐泽, 周家泽, 黄勇. All rights reserved.
+
+
 
 ## 2.开发日志
 
